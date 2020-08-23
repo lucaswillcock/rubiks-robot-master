@@ -15,4 +15,8 @@ To do:
   - 3D CAD designs for all individual parts of the mechanical product
   - Write a motor control class in a seperate file
   - Refine solving method (less if statements)
-  - Out a better way of semlessly moving between pi and Mac (GPIO class)
+  - Figure out a better way of semlessly moving between pi and Mac (GPIO class)
+
+Way further to do:
+
+  - Redo it all in C/C++ for use with a micro

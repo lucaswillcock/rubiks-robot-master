@@ -1,0 +1,42 @@
+{
+    "width": 1024,
+    "height": 570,
+    "buttonHeight": 17,
+    "buttonWidth": 24,
+    "padding": 1,
+    "solvedCubeNotationList":  ["U", "U", "U", "U", "U", "U", "U", "U", "U",
+                                "R", "R", "R", "R", "R", "R", "R", "R", "R",
+                                "F", "F", "F", "F", "F", "F", "F", "F", "F",
+                                "D", "D", "D", "D", "D", "D", "D", "D", "D",
+                                "L", "L", "L", "L", "L", "L", "L", "L", "L",
+                                "B", "B", "B", "B", "B", "B", "B", "B", "B"],
+
+    "cubeColoursList": ["white", "green", "orange", "yellow", "blue", "red"],
+
+    "buttonIDList": ["U1", "U2", "U3", "U4", "U5", "U6", "U7", "U8", "U9",
+                     "R1", "R2", "R3", "R4", "R5", "R6", "R7", "R8", "R9",
+                     "F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9",
+                     "D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8", "D9",
+                     "L1", "L2", "L3", "L4", "L5", "L6", "L7", "L8", "L9",
+                     "B1", "B2", "B3", "B4", "B5", "B6", "B7", "B8", "B9"],
+
+
+    "direction": 40,
+    "clock": 38,
+    "microstep": 36,
+
+    "quarterTurn": 50,
+    "halfTurn": 100,
+
+    "CC": 1,
+    "CCW": 0,
+
+    "delay": 0.001,
+
+    "motorUEN": 37,
+    "motorFEN": 35,
+    "motorDEN": 33,
+    "motorBEN": 32,
+    "motorLEN": 31,
+    "motorREN": 29
+}

@@ -1,5 +1,4 @@
 from tkinter import *
-from tkinter import messagebox
 from tkinter import Text
 import kociemba as k
 import json

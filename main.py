@@ -172,6 +172,7 @@ def createNewWhole():
     outputText("Ready!")
 
 def reset():
+    outputText("This button isn't and only causes confusion and delay, just restart the program and it will be ok")
     createNewWhole()
     currentCube = list(jsonData["solvedCubeNotationList"])
     outputText(listToString(currentCube))

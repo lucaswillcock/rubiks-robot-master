@@ -68,7 +68,8 @@ def outputText(output):
 
 #placeholder for the rpigpio library
 def GPIO_output(a, b):
-    outputText("pin " + str(a) + " set to " + str(b))
+    pass
+    #outputText("pin " + str(a) + " set to " + str(b))
 
 #class for motor control
 class motor:

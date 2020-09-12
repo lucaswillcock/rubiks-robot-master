@@ -38,5 +38,11 @@
     "motorDEN": 33,
     "motorBEN": 32,
     "motorLEN": 31,
-    "motorREN": 29
+    "motorREN": 29,
+
+    "LED1": 8,
+    "LED2": 10,
+    "LED3": 12,
+    "LED4": 16,
+    "LED5": 18
 }

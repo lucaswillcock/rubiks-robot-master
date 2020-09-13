@@ -1,3 +1,5 @@
+# To do list
+
 Make a cleaner and smarter GUI
 Add all my schematics etc to github
 3D CAD designs for all individual parts of the mechanical product

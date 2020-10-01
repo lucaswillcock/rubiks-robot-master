@@ -22,8 +22,7 @@
 
 
     "direction": 40,
-    "clock": 38,
-    "microstep": 36,
+    "clock": 36,
 
     "quarterTurn": 50,
     "halfTurn": 100,

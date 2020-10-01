@@ -35,7 +35,6 @@ CCW = jsonData["CCW"]
 
 direction = jsonData["direction"]
 clock = jsonData["clock"]
-microstep = jsonData["microstep"]
 
 data.close()
 

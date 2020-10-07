@@ -1,4 +1,3 @@
-from inputs import devices
+import kociemba.pykociemba.tools as rc
 
-for device in devices:
-    print(device)
+print(rc.randomCube())

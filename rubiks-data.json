@@ -20,6 +20,11 @@
                      "L1", "L2", "L3", "L4", "L5", "L6", "L7", "L8", "L9",
                      "B1", "B2", "B3", "B4", "B5", "B6", "B7", "B8", "B9"],
 
+    "cubePiecesCorners": ["OBW", "RBW", "RGW", "OGW", "RBY", "OBY", "OGY", "RGY"],
+
+    "cubePiecesEdges": ["WO", "WG", "WR", "WB", "OB", "BR", "RG", "GO", "YB", "YO", "YG", "YR"
+    ],
+
 
     "direction": 40,
     "clock": 36,

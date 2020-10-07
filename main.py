@@ -5,6 +5,7 @@ import json
 import time
 
 import RPi_MacSim.GPIO
+#import RPi.GPIO
 
 #import variable from JSON file
 with open("rubiks-data.json", "r") as data:

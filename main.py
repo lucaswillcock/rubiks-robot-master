@@ -4,6 +4,8 @@ import kociemba as k
 import json
 import time
 
+import RPi_MacSim.GPIO
+
 #import variable from JSON file
 with open("rubiks-data.json", "r") as data:
     readData = data.read()

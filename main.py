@@ -55,7 +55,7 @@ root = Tk()
 root.title("Rubik's Robot")
 root.config(bg = "light grey")
 root.minsize(windowWidth, windowHeight)
-root.maxsize(windowWidth, windowHeight)
+#root.maxsize(windowWidth, windowHeight)
 
 text = Text(root, width = 45, height = 30)
 text.grid(column = 1, row = 0, columnspan = 2, pady = 5, padx = 5)
@@ -78,8 +78,8 @@ class motor:
         GPIO.output(self.en, "high")
         
     def rotate(self, direction, distance):
-        GPIO.output(self.en, "low")
         GPIO.output(self.dir, direction)
+        GPIO.output(self.en, "low")
         for i in range(distance):
             GPIO.output(self.clk, "high")
             time.sleep(self.dly)
@@ -246,13 +246,21 @@ def solve():
         
     end = time.time()
     outputText("Finished in: " + str(round(end - start, 3)))
+    
+def mix():
+    pass
         
 #create button for solving cube
-solveButton = Button(root, text = "Solve", padx = 20, pady = 5, command = solve)
+paddingx = 10
+
+solveButton = Button(root, text = "Solve", padx = paddingx, pady = 5, command = solve)
 solveButton.grid(column = 1, row = 1, padx = 5, pady = 2)
 
-resetButton = Button(root, text = "Reset", padx = 20, pady = 5, command = reset)
-resetButton.grid(column = 2, row = 1, padx = 5, pady = 2)
+mixButton = Button(root, text = "Mix", padx = paddingx, pady = 5, command = mix)
+mixButton.grid(column = 2, row = 1, padx = 5, pady = 2)
+
+resetButton = Button(root, text = "Reset", padx = paddingx, pady = 5, command = reset)
+resetButton.grid(column = 3, row = 1, padx = 5, pady = 2)
 
 createNewWhole()
 

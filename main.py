@@ -67,11 +67,6 @@ def outputText(output):
     text.insert(END, "\n" + output + "\n")
     text.yview_pickplace("end")
 
-#placeholder for the rpigpio library
-def GPIO_output(a, b):
-    pass
-    #outputText("pin " + str(a) + " set to " + str(b))
-
 #class for motor control
 class motor:
     def __init__(self, enable, clock, direction, delay):
@@ -80,18 +75,18 @@ class motor:
         self.dir = direction
         self.dly = delay
         
-        GPIO_output(self.en, "high")
+        GPIO.output(self.en, "high")
         
     def rotate(self, direction, distance):
-        GPIO_output(self.en, "low")
-        GPIO_output(self.dir, direction)
+        GPIO.output(self.en, "low")
+        GPIO.output(self.dir, direction)
         for i in range(distance):
-            GPIO_output(self.clk, "high")
+            GPIO.output(self.clk, "high")
             time.sleep(self.dly)
-            GPIO_output(self.clk, "low")
+            GPIO.output(self.clk, "low")
             time.sleep(self.dly)
             
-        GPIO_output(self.en, "high")
+        GPIO.output(self.en, "high")
 
 UMotor = motor(UMotorEN, clock, direction, delay)
 FMotor = motor(FMotorEN, clock, direction, delay)

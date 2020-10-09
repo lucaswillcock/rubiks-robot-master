@@ -3,6 +3,7 @@ from tkinter import Text
 import kociemba as k
 import json
 import time
+import kociemba.pykociemba.tools as cubeTools
 
 import RPi.GPIO as GPIO
 
@@ -58,7 +59,7 @@ root.minsize(windowWidth, windowHeight)
 #root.maxsize(windowWidth, windowHeight)
 
 text = Text(root, width = 45, height = 30)
-text.grid(column = 1, row = 0, columnspan = 2, pady = 5, padx = 5)
+text.grid(column = 1, row = 0, columnspan = 3, pady = 5, padx = 5)
 
 cubeInputFrame = LabelFrame(root, text = "Cube Interface", padx = 3, pady = 5, bg = "light grey")
 cubeInputFrame.grid(row = 0, column = 0, padx = 4, pady = 8, rowspan = 2)
@@ -173,22 +174,9 @@ def reset():
     createNewWhole()
     currentCube = list(jsonData["solvedCubeNotationList"])
     outputText(listToString(currentCube))
-
-#solve the cube
-def solve():
     
+def executeMoves(algorithmList):
     start = time.time()
-    
-    try:
-        mixString = listToString(currentCube)
-        outputText("Solve function: " + mixString)
-        solution = k.solve(mixString)
-        outputText("Solution: " + solution)
-    except ValueError:
-        outputText("An error has occurred, please revise your \ninputs")
-        
-    algorithmList = solution.split()
-    
     for i in range(len(algorithmList)):
         if algorithmList[i] == "U":
             UMotor.rotate(CC, quarterTurn)
@@ -246,6 +234,19 @@ def solve():
         
     end = time.time()
     outputText("Finished in: " + str(round(end - start, 3)))
+
+#solve the cube
+def solve(mixString):
+    try:
+        #mixString = listToString(currentCube)
+        outputText("Solve function: " + mixString)
+        solution = k.solve(mixString)
+        outputText("Solution: " + solution)
+    except ValueError:
+        outputText("An error has occurred, please revise your \ninputs")
+        
+    algorithmList = solution.split()
+    executeMoves(algorithmList)    
     
 def mix():
     pass
@@ -254,9 +255,11 @@ def mix():
 paddingx = 10
 
 solveButton = Button(root, text = "Solve", padx = paddingx, pady = 5, command = solve)
+solveButton.config(command = lambda: solve(listToString(currentCube)))
 solveButton.grid(column = 1, row = 1, padx = 5, pady = 2)
 
 mixButton = Button(root, text = "Mix", padx = paddingx, pady = 5, command = mix)
+mixButton.config(command = lambda: mix())
 mixButton.grid(column = 2, row = 1, padx = 5, pady = 2)
 
 resetButton = Button(root, text = "Reset", padx = paddingx, pady = 5, command = reset)

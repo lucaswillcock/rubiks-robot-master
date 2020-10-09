@@ -170,7 +170,7 @@ def createNewWhole():
     outputText("Ready!")
 
 def reset():
-    outputText("This button isn't and only causes confusion and delay, just restart the program and it will be ok")
+    outputText("This button isn't working and only causes \nconfusion and delay, just restart the program and it will be ok")
     createNewWhole()
     currentCube = list(jsonData["solvedCubeNotationList"])
     outputText(listToString(currentCube))
@@ -236,11 +236,11 @@ def executeMoves(algorithmList):
     outputText("Finished in: " + str(round(end - start, 3)))
 
 #solve the cube
-def solve(mixString):
+def solve(currentCube):
     try:
         #mixString = listToString(currentCube)
-        outputText("Solve function: " + mixString)
-        solution = k.solve(mixString)
+        outputText("Solve function: " + currentCube)
+        solution = k.solve(currentCube)
         outputText("Solution: " + solution)
     except ValueError:
         outputText("An error has occurred, please revise your \ninputs")
@@ -249,7 +249,9 @@ def solve(mixString):
     executeMoves(algorithmList)    
     
 def mix():
-    pass
+    randomCube = cubeTools.randomCube()
+    
+    outputText("Random Mix: " + randomCube)
         
 #create button for solving cube
 paddingx = 10

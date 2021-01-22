@@ -70,3 +70,16 @@ LMotor = motor(LMotorEN, clock, direction, delay)
 RMotor = motor(RMotorEN, clock, direction, delay)
 
 print("motors initiated")
+
+root = Tk()
+root.title("Motor tester")
+#root.config(bg = "light grey")
+root.minsize(windowWidth, windowHeight)
+
+motor1button = Button(root, text = "motor 1")
+motor1button.grid(column = 0, row = 0)
+
+
+
+
+root.mainloop()

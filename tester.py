@@ -3,9 +3,9 @@ from tkinter import *
 import json
 import time
 
-from imports import init
-
 import RPi.GPIO as GPIO
+
+from imports import init
 
 init.installLibraries()
 

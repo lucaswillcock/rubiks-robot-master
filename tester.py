@@ -3,7 +3,11 @@ from tkinter import *
 import json
 import time
 
+from imports import init
+
 import RPi.GPIO as GPIO
+
+init.installLibraries()
 
 #import variable from JSON file
 with open("rubiks-data.json", "r") as data:

@@ -26,8 +26,7 @@ try:
     # Drawing on the Horizontal image
     Himage = Image.new('1', (display.width, display.height), 255)  # 255: clear the frame
     draw = ImageDraw.Draw(Himage)
-    draw.text((10, 0), 'My nuts are huge', font = font24, fill = 0)
-    draw.text((10, 20), '4.2inch e-Paper', font = font24, fill = 0)   
+    draw.text((10, 0), 'My nuts are huge', font = font35, fill = 0)  
     draw.line((20, 50, 70, 100), fill = 0)
     display.display(display.getbuffer(Himage))
     time.sleep(2)

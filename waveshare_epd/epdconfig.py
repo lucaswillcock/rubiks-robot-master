@@ -38,9 +38,9 @@ logger = logging.getLogger(__name__)
 class RaspberryPi:
     # Pin definition
     RST_PIN         = 17
-    DC_PIN          = 25
+    DC_PIN          = 7
     CS_PIN          = 8
-    BUSY_PIN        = 24
+    BUSY_PIN        = 18
 
     def __init__(self):
         import spidev

@@ -12,7 +12,9 @@ import traceback
 try:
     
     display = epd4in2.EPD()
+    print("initialising")
     display.init()
+    print("clearing")
     display.Clear()
     
     font24 = ImageFont.truetype('Font.ttc', 24)
@@ -23,10 +25,11 @@ try:
     Himage = Image.new('1', (display.width, display.height), 255)  # 255: clear the frame
     draw = ImageDraw.Draw(Himage)
     draw.text((10, 0), 'My nuts are huge', font = font35, fill = 0)  
-    draw.line((20, 50, 70, 100), fill = 0)
+    #draw.line((20, 50, 70, 100), fill = 0)
+    print("display image")
     display.display(display.getbuffer(Himage))
-    time.sleep(2)
-    
+    time.sleep(10)
+    print("clearing")
     display.Clear()
     display.sleep()
     

@@ -16,6 +16,8 @@ try:
     display.init()
     print("clearing")
     display.Clear()
+    print("cleared")
+    time.sleep(10)
     
     font24 = ImageFont.truetype('Font.ttc', 24)
     font18 = ImageFont.truetype('Font.ttc', 18)

@@ -8,28 +8,28 @@ direction_PIN = 27
 GPIO.setmode(GPIO.BCM)
 
 class motor:
-    def __init__(self, enable, clock, direction, delay):
+    def __init__(self, enable, pulse, direction, delay):
         self.en = enable
-        self.clk = clock
+        self.pulse = pulse
         self.dir = direction
         self.dly = delay
         
         GPIO.setup(enable, GPIO.OUT)
-        GPIO.setup(clock, GPIO.OUT)
+        GPIO.setup(pulse, GPIO.OUT)
         GPIO.setup(direction, GPIO.OUT)
         
-        GPIO.output(self.en, 1)
+        #GPIO.output(self.en, 1)
         
     def rotate(self, direction, distance):
-        GPIO.output(self.en, 0)
+        #GPIO.output(self.en, 0)
         GPIO.output(self.dir, 1)
         for i in range(50):
-            GPIO.output(self.clk, 1)
+            GPIO.output(self.pulse, 1)
             time.sleep(self.dly)
-            GPIO.output(self.clk, 0)
+            GPIO.output(self.pulse, 0)
             time.sleep(self.dly)
             
-        GPIO.output(self.en, 1)
+        #GPIO.output(self.en, 1)
     
 speed = 0.02
 

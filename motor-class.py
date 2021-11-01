@@ -36,6 +36,6 @@ speed = 0.02
 Motor = motor(enable_PIN, pulse_PIN, direction_PIN, speed)
 
 while 1:
-    speed = int(input("Speed: "))
+    speed = input("Speed: ")
     Motor.rotate("high", 50)
     print("Finished")

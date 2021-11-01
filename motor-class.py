@@ -27,7 +27,7 @@ class motor:
     
 speed = 0.02
 
-Motor = motor("enable", "clock", "direction", speed)
+Motor = motor(enable_PIN, pulse_PIN, direction_PIN, speed)
 
 while 1:
     speed = int(input("Speed: "))

@@ -2,7 +2,7 @@ import RPi.GPIO as GPIO
 import time
 
 enable_PIN = 4
-pulse_PIN = 21
+pulse_PIN = 13
 direction_PIN = 27
 
 GPIO.setmode(GPIO.BCM)
@@ -37,5 +37,5 @@ Motor = motor(enable_PIN, pulse_PIN, direction_PIN, speed)
 
 while 1:
     speed = input("Speed: ")
-    Motor.rotate("high", 50)
+    Motor.rotate(1, 50)
     print("Finished")

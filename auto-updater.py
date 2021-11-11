@@ -1,3 +1,3 @@
-import os
+from github import Github
 
-os.system("ssh pi@lucas-rpi.local")
+g = Github(base_url = )

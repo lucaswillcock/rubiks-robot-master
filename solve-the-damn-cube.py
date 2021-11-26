@@ -1,15 +1,26 @@
 import time
 import logging
+from pyfirmata import *
+import cv2 as cv
+from pyfirmata import Arduino
 
 try:
-    import RPi.GPIO as GPIO
+    #import RPi.GPIO as GPIO
     from kociemba import *
-except ModuleNotFoundError:
-    logging.error("Module not found.")    
+except ModuleNotFoundError as error:
+    logging.error(error)
+    
+logging.basicConfig(level = logging.CRITICAL)
+    
+try:
+    arduino = Arduino("/dev/tty.usbserial-142140")
+    logging.info("Arduino connected successfully")
+except serial.serialutil.SerialException as e:
+    logging.error(" Couldnt find board")
 
 #class that establishs a motor, has half turn and quarter
 class encodedStepper:
-    #iniates motor oject assigning pins
+    #iniates motor object assigning pins
     def __init__(self, position, enable, pulse, direction, speed, stepRatio):
         self.enable = enable
         self.pulse = pulse

@@ -18,6 +18,20 @@ try:
 except serial.serialutil.SerialException as e:
     logging.error(" Couldnt find board")
 
+#Arduino Pin Assignments
+pulsePin = 10
+directionPin = 10
+motorUpEnable = 10
+motorDownEnable = 10
+motorFrontEnable = 10
+motorBackEnable = 10
+motorRightEnable = 10
+motorLeftEnable = 10
+
+#Raspberry Pi Pin Assignments
+buttonLeft = 10
+buttonRight = 10
+
 #class that establishs a motor, has half turn and quarter
 class encodedStepper:
     #iniates motor object assigning pins
@@ -29,31 +43,25 @@ class encodedStepper:
         self.location = position
         self.pulsesFullTurn = 360*(1.8*stepRatio)
         
-        GPIO.setup(enable, GPIO.OUT)
-        GPIO.setup(pulse, GPIO.OUT)
-        GPIO.setup(direction, GPIO.OUT)
-        
-        logging.info("")
-        
         #disables motor, allows it to turn freely
-        GPIO.output(self.enable, 1)
+        arduino.digital[self.enable].write(1)
         
     def rotateQuarter(self, direction):
-        GPIO.output(self.enable, 0)
-        GPIO.output(self.direction, direction)
+        arduino.digital[self.enable].write(0)
+        arduino.digital[self.direction].write(direction)
         for i in range(self.pulsesFullTurn/4):
-            GPIO.output(self.pulse, 1)
+            arduino.digital[self.pulse].write(1)
             time.sleep(self.speed)
-            GPIO.output(self.pulse, 0)
+            arduino.digital[self.pulse].write(1)
             time.sleep(self.speed)
-        GPIO.output(self.en, 1)
-            
+        arduino.digital[self.enable].write(0)
+        
     def rotateHalf(self, direction):
-        GPIO.output(self.enable, 0)
-        GPIO.output(self.direction, direction)
-        for i in range(self.pulsesFullTurn/4):
-            GPIO.output(self.pulse, 1)
+        arduino.digital[self.enable].write(0)
+        arduino.digital[self.direction].write(direction)
+        for i in range(self.pulsesFullTurn/2):
+            arduino.digital[self.pulse].write(1)
             time.sleep(self.speed)
-            GPIO.output(self.pulse, 0)
-            time.sleep(self.speed)            
-        GPIO.output(self.en, 1)
+            arduino.digital[self.pulse].write(1)
+            time.sleep(self.speed)
+        arduino.digital[self.enable].write(0)

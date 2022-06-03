@@ -33,8 +33,7 @@ motorRightEnable = 10
 motorLeftEnable = 10
 
 #Raspberry Pi Pin Assignments
-buttonLeft = 10
-buttonRight = 10
+buttonControl = 10
 
 #class that establishs a motor, has half turn and quarter
 class encodedStepper:
@@ -79,7 +78,6 @@ class cameraObject:
     def getImage(self):
         _, image = self.camera.read()
         image = cv.flip(image, 1)
-        cv.putText(image, "Big Fat Cock", (100, 100), cv.FONT_HERSHEY_COMPLEX, 5, (255, 255, 255))
         cv.imwrite("Image.jpg", image)
         print("Image capture successful")
         

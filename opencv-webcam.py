@@ -1,13 +1,34 @@
 import cv2 as cv
 import numpy as np
+import imutils
 
 #image parameters
-startRefX = 200
-startRefY = 200
+startRef = (180, 370)
+
+startRefx = 185
+startRefy = 368
+
+truePixelLength = 240
+perspectiveLength = 196
+
+xIncrement = 207
+yIncrement = 130
 
 #process image
 cubeBottomRight = cv.imread("cube.jpeg")
-cubeBottomRight = cv.circle(cubeBottomRight, (startRefX, startRefY), 50, (255, 255, 255), 10)
+cubeBottomRight = imutils.rotate(cubeBottomRight, -0.4)
+cubeBottomRight = cv.circle(cubeBottomRight, startRef, 10, (250, 0, 0), 20)
+cubeBottomRight = cv.circle(cubeBottomRight, (350, 468), 10, (250, 0, 0), 20)
+
+x = startRefx
+y = startRefy
+for i in range(4):
+    for i in range(4):
+        cubeBottomRight = cv.circle(cubeBottomRight, (x, y), 10, (250, 0, 0), 20)
+        x += xIncrement * 2
+    x = startRefx   
+    y += yIncrement * 2
+
 
 #Display the image
 cv.imshow("Display", cubeBottomRight)

@@ -3,32 +3,31 @@ import numpy as np
 import imutils
 
 #image parameters
-startRef = (180, 370)
+dotsize =  4
+dotthickness = 4
+colour = (255, 255, 255)
 
-startRefx = 185
-startRefy = 368
+startRefx = 517
+startRefy = 45
+startRef = (startRefx, startRefy)
 
-truePixelLength = 240
-perspectiveLength = 196
+
 
 xIncrement = 207
-yIncrement = 130
+yIncrement = 64
 
 #process image
-cubeBottomRight = cv.imread("cube.jpeg")
-cubeBottomRight = imutils.rotate(cubeBottomRight, -0.4)
-cubeBottomRight = cv.circle(cubeBottomRight, startRef, 10, (250, 0, 0), 20)
-cubeBottomRight = cv.circle(cubeBottomRight, (350, 468), 10, (250, 0, 0), 20)
-
+cubeBottomRight = cv.imread("cube.png")
+#cubeBottomRight = imutils.rotate(cubeBottomRight, -0.4)
 x = startRefx
 y = startRefy
-for i in range(4):
-    for i in range(4):
-        cubeBottomRight = cv.circle(cubeBottomRight, (x, y), 10, (250, 0, 0), 20)
-        x += xIncrement * 2
-    x = startRefx   
-    y += yIncrement * 2
-
+for i in range(7):
+    cubeBottomRight = cv.circle(cubeBottomRight, (x, y), dotsize, colour, dotthickness)
+    y += yIncrement
+    if i >= 3:
+        yIncrement = 75
+    else:
+        yIncrement += 15
 
 #Display the image
 cv.imshow("Display", cubeBottomRight)

@@ -5,11 +5,11 @@ import json
 import time
 import kociemba.pykociemba.tools as cubeTools
 
-from imports import init
+#from imports import init
 
 import RPi.GPIO as GPIO
 
-init.installLibraries()
+#init.installLibraries()
 
 #import variable from JSON file
 with open("rubiks-data.json", "r") as data:

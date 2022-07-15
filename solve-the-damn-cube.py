@@ -14,13 +14,6 @@ except ModuleNotFoundError as error:
     logging.error(error)
     
 logging.basicConfig(level = logging.CRITICAL)
-    
-try:
-    arduino = Arduino("/dev/tty.usbserial-142140")
-    logging.info("Arduino connected successfully")
-except serial.serialutil.SerialException as e:
-    logging.error(" Couldnt find board")
-    logging.error(e)
 
 #Arduino Pin Assignments
 pulsePin = 10

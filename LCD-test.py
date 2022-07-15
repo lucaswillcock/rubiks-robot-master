@@ -3,5 +3,5 @@ import time
 
 mylcd = I2C_LCD_driver.lcd()
 
-mylcd.lcd_display_string("Hello World!", 1)
+mylcd.lcd_display_string("penis", 1)
 time.sleep(20)

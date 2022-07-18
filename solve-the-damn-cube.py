@@ -30,20 +30,19 @@ LCD = lcdLib.lcd()
 
 #Umotor = motor(motorUpEnable, pulsePin, directionPin)
         
-class cameraObject:
-    def __init__(self, port) -> None:
-        self.camera = cv.VideoCapture(port)
-
-    def getImage(self, filename):
-        _, image = self.camera.read()
-        image = cv.flip(image, 1)
-        cv.imwrite(filename, image)
+def takePhotos():
+        cameraTop = cv.VideoCapture(1)
+        _, topImg = cameraTop.read()
+        topImg = cv.flip(topImg, 1)
+        cv.imwrite("top.jpeg", topImg)
         print("Image capture successful")
-        LCD.lcd_display_string("image successful")
+        LCD.lcd_display_string("image 1 successful")
         
-topCam = cameraObject(0)
-bottomCam = cameraObject(1)
-
-topCam.getImage("top.jpeg")
-time.sleep(10)
-bottomCam.getImage("bottom.jpeg")
+        cameraBottom = cv.VideoCapture(0)
+        _, botImg = cameraTop.read()
+        topImg = cv.flip(botImg, 1)
+        cv.imwrite("top.jpeg", botImg)
+        print("Image capture successful")
+        LCD.lcd_display_string("image2 successful")
+        
+takePhotos()

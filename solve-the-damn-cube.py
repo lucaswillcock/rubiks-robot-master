@@ -34,15 +34,15 @@ class cameraObject:
     def __init__(self, port) -> None:
         self.camera = cv.VideoCapture(port)
 
-    def getImage(self):
+    def getImage(self, filename):
         _, image = self.camera.read()
         image = cv.flip(image, 1)
-        cv.imwrite("Image.jpg", image)
+        cv.imwrite(filename, image)
         print("Image capture successful")
         LCD.lcd_display_string("image successful")
         
 topCam = cameraObject(0)
 bottomCam = cameraObject(1)
 
-topCam.getImage()
-bottomCam.getImage()
+topCam.getImage("top.jpeg")
+bottomCam.getImage("bottom.jpeg")

@@ -31,17 +31,17 @@ LCD = lcdLib.lcd()
 #Umotor = motor(motorUpEnable, pulsePin, directionPin)
         
 def takePhotos():
-        cameraTop = cv.VideoCapture(1)
+        cameraTop = cv.VideoCapture(0)
         _, topImg = cameraTop.read()
         topImg = cv.flip(topImg, 1)
-        cv.imwrite("top.jpeg", topImg)
+        cv.imwrite("top.png", topImg)
         print("Image capture successful")
         LCD.lcd_display_string("image 1 successful")
         
-        cameraBottom = cv.VideoCapture(0)
+        cameraBottom = cv.VideoCapture(1)
         _, botImg = cameraTop.read()
         topImg = cv.flip(botImg, 1)
-        cv.imwrite("top.jpeg", botImg)
+        cv.imwrite("top.png", botImg)
         print("Image capture successful")
         LCD.lcd_display_string("image2 successful")
         

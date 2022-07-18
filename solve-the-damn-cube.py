@@ -41,5 +41,8 @@ class cameraObject:
         print("Image capture successful")
         LCD.lcd_display_string("image successful")
         
-webcam = cameraObject(0)
-webcam.getImage()
+topCam = cameraObject(0)
+bottomCam = cameraObject(1)
+
+topCam.getImage()
+bottomCam.getImage()

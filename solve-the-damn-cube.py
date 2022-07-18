@@ -45,4 +45,5 @@ topCam = cameraObject(0)
 bottomCam = cameraObject(1)
 
 topCam.getImage("top.jpeg")
+time.sleep(10)
 bottomCam.getImage("bottom.jpeg")

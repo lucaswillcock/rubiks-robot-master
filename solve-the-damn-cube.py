@@ -41,7 +41,7 @@ def takePhotos():
         cameraBottom = cv.VideoCapture(1)
         _, botImg = cameraTop.read()
         topImg = cv.flip(botImg, 1)
-        cv.imwrite("top.png", botImg)
+        cv.imwrite("bottom.png", botImg)
         print("Image capture successful")
         LCD.lcd_display_string("image2 successful")
         

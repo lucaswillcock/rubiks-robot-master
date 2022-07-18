@@ -4,7 +4,8 @@ import time
 import imutils
 import numpy as np
 from sklearn.cluster import KMeans
-from collections import Counter 
+from collections import Counter
+import pandas as pd 
 
 image = "topCopy.png"
 
@@ -29,6 +30,9 @@ posList = [
     (235, 165)
 ]
 
+index=["color", "color_name", "hex", "R", "G", "B"]
+csv = pd.read_csv('colors.csv', names=index, header=None)
+
 def recognize_color(R,G,B):
     minimum = 10000
     for i in range(len(csv)):
@@ -37,7 +41,6 @@ def recognize_color(R,G,B):
             minimum = d
             cname = csv.loc[i,"color_name"]
     return cname
-
 
 def get_dominant_color(image, k=4, image_processing_size = None):
     if image_processing_size is not None:
@@ -68,6 +71,8 @@ for i in range(len(posList)):
     
     color.reverse()
     print(color)
+    colourString = recognize_color(color[0], color[1], color[2])
+    print(colourString  )
  
 # imageTop = imageTop[10:100, 50:110]
 

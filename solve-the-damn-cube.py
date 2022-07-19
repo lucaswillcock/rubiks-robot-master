@@ -38,6 +38,8 @@ def takePhotos():
         print("Image capture successful")
         LCD.lcd_display_string("image 1 successful")
         
+        camera0.release()
+        
         time.sleep(5)
         LCD.lcd_display_string("move light")
         time.sleep(20)
@@ -48,5 +50,7 @@ def takePhotos():
         cv.imwrite("bottom.png", botImg)
         print("Image capture successful")
         LCD.lcd_display_string("image2 successful")
+        
+        camera1.release()
         
 takePhotos()

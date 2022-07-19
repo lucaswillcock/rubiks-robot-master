@@ -39,7 +39,7 @@ def takePhoto(port, imageName):
         LCD.lcd_display_string("image successful")
         camera0.release()
         
-takePhoto(0, "top.png")
+#takePhoto(0, "top.png")
 LCD.lcd_clear()
 LCD.lcd_display_string("move")
-#takePhoto(-1, "bottom.png")
+takePhoto(-1, "bottom.png")

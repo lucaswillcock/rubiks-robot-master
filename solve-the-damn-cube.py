@@ -30,27 +30,16 @@ LCD = lcdLib.lcd()
 LCD.lcd_display_string("Hello muthfuckas")
 #Umotor = motor(motorUpEnable, pulsePin, directionPin)
         
-def takePhotos():
-        camera0 = cv.VideoCapture(0)
-        _, topImg = camera0.read()
+def takePhoto(port, imageName):
+        camera0 = cv.VideoCapture(port)
+        _, image = camera0.read()
         #topImg = cv.flip(topImg, 1)
-        cv.imwrite("top.png", topImg)
+        cv.imwrite(imageName, image)
         print("Image capture successful")
-        LCD.lcd_display_string("image 1 successful")
-        
+        LCD.lcd_display_string("image successful")
         camera0.release()
         
-        time.sleep(5)
-        LCD.lcd_display_string("move light")
-        time.sleep(20)
-        
-        camera1 = cv.VideoCapture(1)
-        _, botImg = camera1.read()
-        #topImg = cv.flip(botImg, 1)
-        cv.imwrite("bottom.png", botImg)
-        print("Image capture successful")
-        LCD.lcd_display_string("image2 successful")
-        
-        camera1.release()
-        
-takePhotos()
+takePhoto(0, "top.png")
+LCD.lcd_clear()
+LCD.lcd_display_string("move")
+takePhoto(1, "bottom.png")

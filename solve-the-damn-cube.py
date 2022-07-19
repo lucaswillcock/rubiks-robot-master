@@ -27,12 +27,12 @@ buttonControl = 10
 
 #define LCD
 LCD = lcdLib.lcd()
-
+LCD.lcd_display_string("Hello muthfuckas")
 #Umotor = motor(motorUpEnable, pulsePin, directionPin)
         
 def takePhotos():
-        cameraTop = cv.VideoCapture(0)
-        _, topImg = cameraTop.read()
+        camera = cv.VideoCapture(0)
+        _, topImg = camera.read()
         #topImg = cv.flip(topImg, 1)
         cv.imwrite("top.png", topImg)
         print("Image capture successful")
@@ -40,9 +40,9 @@ def takePhotos():
         
         time.sleep(5)
         print("move light")
-        time.sleep("20")
-        cameraTop = cv.VideoCapture(1)
-        _, botImg = cameraTop.read()
+        time.sleep(20)
+        camera = cv.VideoCapture(1)
+        _, botImg = camera.read()
         #topImg = cv.flip(botImg, 1)
         cv.imwrite("bottom.png", botImg)
         print("Image capture successful")

@@ -1,7 +1,12 @@
 import RPi.GPIO as GPIO
 import time
-
+import I2C_LCD_driver as LCD
 GPIO.setmode(GPIO.BCM)
+
+lcd = LCD.lcd()
+
+lcd.lcd_clear()
+lcd.lcd_display_string("Hello mum!", 1)
 
 pulseDelay = 0.0002
 

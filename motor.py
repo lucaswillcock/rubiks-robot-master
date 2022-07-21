@@ -47,9 +47,14 @@ MotorLeft = motor(Lmotor, pulse, direction, pulseDelay)
 MotorDown = motor(Dmotor, pulse, direction, pulseDelay)
 MotorFront = motor(Fmotor, pulse, direction, pulseDelay)
 
-MotorRight.rotate(1, 400)
-MotorLeft.rotate(1, 400)
-MotorUp.rotate(1, 400)
-MotorDown.rotate(1, 400)
-MotorFront.rotate(1, 400)
-MotorBack.rotate(1, 400)
+def runAll():
+    
+    MotorRight.rotate(1, 400)
+    MotorLeft.rotate(1, 400)
+    MotorUp.rotate(1, 400)
+    MotorDown.rotate(1, 400)
+    MotorFront.rotate(1, 400)
+    MotorBack.rotate(1, 400)
+    
+for i in range(10):
+    runAll()

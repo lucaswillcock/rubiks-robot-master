@@ -8,7 +8,7 @@ pixels.fill((255, 255, 255))
 
 time.sleep(1)
 
-pixels.fill((50,50,50))
+pixels.fill((0, 0, 0))
 
 
 for i in range(10):

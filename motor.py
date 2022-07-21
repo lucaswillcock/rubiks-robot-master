@@ -29,4 +29,4 @@ class motor:
         
 motor1 = motor(22, pulse, 17, 0.0005)
 
-motor1.rotate(1, 400)
+motor1.rotate(1, 1600)

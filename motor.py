@@ -54,12 +54,12 @@ MotorFront = motor(Fmotor, pulse, direction, pulseDelay)
 
 def runAll():
     
-    MotorRight.rotate(1, 400)
-    MotorLeft.rotate(1, 400)
-    MotorUp.rotate(1, 400)
-    MotorDown.rotate(1, 400)
-    MotorFront.rotate(1, 400)
-    MotorBack.rotate(1, 400)
+    MotorRight.rotate(1, 200)
+    MotorLeft.rotate(1, 200)
+    MotorUp.rotate(1, 200)
+    MotorDown.rotate(1, 200)
+    MotorFront.rotate(1, 200)
+    MotorBack.rotate(1, 200)
     
 for i in range(2):
     runAll()

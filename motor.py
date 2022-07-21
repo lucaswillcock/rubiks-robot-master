@@ -4,6 +4,7 @@ import time
 GPIO.setmode(GPIO.BCM)
 
 pulse = 27
+Dmotor = 22
 
 class motor:
     def __init__(self, enable, pulse, direction, delay):
@@ -25,8 +26,9 @@ class motor:
             GPIO.output(self.pulse, 0)
             time.sleep(self.dly)
             
+        time.sleep(0.1)
         GPIO.output(self.en, 0)
         
-motor1 = motor(22, pulse, 17, 0.0002)
+motor1 = motor(Dmotor, pulse, 17, 0.0002)
 
 motor1.rotate(1, 400)

@@ -61,5 +61,5 @@ def runAll():
     MotorFront.rotate(1, 200)
     MotorBack.rotate(1, 200)
     
-for i in range(2):
+for i in range(1):
     runAll()

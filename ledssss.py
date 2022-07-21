@@ -14,6 +14,6 @@ pixels.fill((0, 0, 0))
 for i in range(10):
     for i in range(96):
         
-        pixels[i] = (255, 255, 255)
+        pixels[i] = (i, i, 255)
         time.sleep(0.1)
         pixels[i] = (0, 0 ,0)

@@ -3,8 +3,17 @@ import time
 
 GPIO.setmode(GPIO.BCM)
 
+pulseDelay = 0.0002
+
 pulse = 27
-Dmotor = 22
+direction = 17
+
+Rmotor = 22
+Bmotor = 5
+Umotor = 6
+Lmotor = 13
+Dmotor = 19
+Fmotor = 26
 
 class motor:
     def __init__(self, enable, pulse, direction, delay):
@@ -16,6 +25,8 @@ class motor:
         GPIO.setup(enable, GPIO.OUT)
         GPIO.setup(pulse, GPIO.OUT)
         GPIO.setup(direction, GPIO.OUT)
+        
+        GPIO.output(self.en, 0)
         
     def rotate(self, direction, distance):
         GPIO.output(self.en, 1)
@@ -29,6 +40,11 @@ class motor:
         time.sleep(0.1)
         GPIO.output(self.en, 0)
         
-motor1 = motor(Dmotor, pulse, 17, 0.0002)
+MotorRight = motor(Rmotor, pulse, direction, pulseDelay)
+MotorBack = motor(Bmotor, pulse, direction, pulseDelay)
+MotorUp = motor(Umotor, pulse, direction, pulseDelay)
+MotorLeft = motor(Lmotor, pulse, direction, pulseDelay)
+MotorDown = motor(Dmotor, pulse, direction, pulseDelay)
+MotorFront = motor(Fmotor, pulse, direction, pulseDelay)
 
-motor1.rotate(1, 400)
+MotorRight.rotate(1, 400)

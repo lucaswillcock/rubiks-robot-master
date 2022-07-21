@@ -48,3 +48,4 @@ MotorDown = motor(Dmotor, pulse, direction, pulseDelay)
 MotorFront = motor(Fmotor, pulse, direction, pulseDelay)
 
 MotorRight.rotate(1, 400)
+MotorLeft.rotate(1, 400)

@@ -28,3 +28,5 @@ class motor:
         GPIO.output(self.en, 0)
         
 motor1 = motor(22, pulse, 17, 0.02)
+
+motor1.rotate(1, 400)

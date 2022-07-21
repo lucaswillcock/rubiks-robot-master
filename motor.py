@@ -3,6 +3,8 @@ import time
 
 GPIO.setmode(GPIO.BCM)
 
+pulse = 27
+
 class motor:
     def __init__(self, enable, pulse, direction, delay):
         self.en = enable
@@ -24,3 +26,5 @@ class motor:
             time.sleep(self.dly)
             
         GPIO.output(self.en, 0)
+        
+motor1 = motor(22, pulse, 17, 0.02)

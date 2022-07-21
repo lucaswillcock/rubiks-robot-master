@@ -49,3 +49,7 @@ MotorFront = motor(Fmotor, pulse, direction, pulseDelay)
 
 MotorRight.rotate(1, 400)
 MotorLeft.rotate(1, 400)
+MotorUp.rotate(1, 400)
+MotorDown.rotate(1, 400)
+MotorFront.rotate(1, 400)
+MotorBack.rotate(1, 400)

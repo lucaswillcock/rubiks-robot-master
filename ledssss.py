@@ -16,10 +16,21 @@ class ledRing:
         for i in range(len(self.pixels)):
             leds[self.pixels[i]] = colour
             
-            
-            
+    def off(self):
+        for i in range(len(self.pixels)):
+            leds[self.pixels[i]] = (0,0,0)
             
             
 ringBack = ledRing(1)
+ring2 = ledRing(2)
+ring3 = ledRing(3)
+ring4 = ledRing(4)
+ring5 = ledRing(5)
+ring6 = ledRing(6)
 
 ringBack.on((0, 50, 0))
+ring2.on((0, 50, 0))
+ring3.on((0, 50, 0))
+ring4.on((0, 50, 0))
+ring5.on((0, 50, 0))
+ring6.on((0, 50, 0))

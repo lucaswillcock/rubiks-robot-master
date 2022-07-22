@@ -11,6 +11,7 @@ class ledRing:
         self.pixels = []
         for i in range(16):
             self.pixels.append(i*motorNum)
+            print(self.pixels)
             
     def on(self, colour):
         for i in range(len(self.pixels)):

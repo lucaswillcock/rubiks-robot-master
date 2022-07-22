@@ -45,9 +45,14 @@ class motor:
         if direction == 1:
             direction = 0
             GPIO.output(self.en, 1)
+            time.sleep(self.dly)
+            GPIO.output(self.pulse, 0)
+            
         elif direction == 0:
             direction = 1
             GPIO.output(self.en, 1)
+            time.sleep(self.dly)
+            GPIO.output(self.pulse, 0)
         
         GPIO.output(self.en, 0)
         

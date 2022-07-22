@@ -2,7 +2,8 @@ import cv2 as cv
 import ledssss
 import time
 
-white = (10, 10, 10)
+brightness = 40
+white = (brightness, brightness, brightness)
 
 ringBack = ledssss.ledRing(1)
 ringUp = ledssss.ledRing(2)

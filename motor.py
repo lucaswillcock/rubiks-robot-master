@@ -8,7 +8,7 @@ lcd = LCD.lcd()
 lcd.lcd_clear()
 lcd.lcd_display_string("Hello mum!", 1)
 
-pulseDelay = 0.00015
+pulseDelay = 0.0002
 
 pulse = 27
 direction = 17

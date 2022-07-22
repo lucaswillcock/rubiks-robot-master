@@ -56,6 +56,7 @@ class motor:
             time.sleep(self.dly)
             GPIO.output(self.pulse, 0)
         
+        time.sleep(self.dly)
         GPIO.output(self.en, 0)
         
 MotorRight = motor(Rmotor, pulse, direction, pulseDelay)

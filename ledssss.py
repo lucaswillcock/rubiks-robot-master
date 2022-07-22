@@ -10,7 +10,7 @@ class ledRing:
     def __init__(self, motorNum):
         self.pixels = []
         for i in range(15):
-            self.leds.append((i+1)*motorNum)
+            self.pixels.append((i+1)*motorNum)
             
     def on(self, colour):
         for i in range(len(self.pixels)):

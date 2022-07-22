@@ -57,13 +57,11 @@ def runAll():
     MotorDown.rotate(1, 200)
     MotorFront.rotate(1, 200)
     MotorBack.rotate(1, 200)
-    
-#for i in range(1):
-#    runAll()
-
 
 start = time.time()
-MotorFront.rotate(1, 100)
+#MotorFront.rotate(1, 100)
+
+runAll()
 end = time.time()
 
 lcd.lcd_clear()

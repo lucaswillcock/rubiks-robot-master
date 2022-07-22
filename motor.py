@@ -77,4 +77,4 @@ def runAll():
 #for i in range(1):
 #    runAll()
 
-MotorFront.rotate(1, 100)
+MotorFront.rotate(1, 800)

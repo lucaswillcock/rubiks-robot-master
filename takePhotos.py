@@ -1,4 +1,15 @@
 import cv2 as cv
+import ledssss
+import time
+
+white = (100, 100, 100)
+
+ringBack = ledssss.ledRing(1)
+ringUp = ledssss.ledRing(2)
+ringLeft = ledssss.ledRing(3)
+ringDown = ledssss.ledRing(4)
+ringRight = ledssss.ledRing(5)
+ringFront = ledssss.ledRing(6)
 
 def takePhoto(port, imageName):
         camera0 = cv.VideoCapture(port)
@@ -8,5 +19,22 @@ def takePhoto(port, imageName):
         camera0.release()
         
 
-takePhoto(2, "top.png")
-takePhoto(0, "bottom.png")
+def photoTop():
+    ringBack.on(white)
+    ringUp.on(white)
+    ringLeft.on(white)
+    ringRight.off()
+    ringDown.off()
+    ringFront.off()
+    time.sleep(1)
+    takePhoto(2, "top.png")
+    
+def photoBottom():
+    ringRight.on(white)
+    ringDown.on(white)
+    ringFront.on(white)
+    ringBack.off()
+    ringUp.off()
+    ringLeft.off()
+    time.sleep(1)
+    takePhoto(0, "bottom.png")

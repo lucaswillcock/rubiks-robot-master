@@ -27,8 +27,9 @@ def photoTop():
     ringRight.off()
     ringDown.off()
     ringFront.off()
-    time.sleep(1)
+    time.sleep(0.2)
     takePhoto(2, "top.png")
+    time.sleep(0.2)
     
 def photoBottom():
     ringRight.on(white)
@@ -37,8 +38,9 @@ def photoBottom():
     ringBack.off()
     ringUp.off()
     ringLeft.off()
-    time.sleep(1)
+    time.sleep(0.2)
     takePhoto(0, "bottom.png")
+    time.sleep(0.2)
     
 photoBottom()
 photoTop()

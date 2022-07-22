@@ -40,7 +40,7 @@ class motor:
             GPIO.output(self.pulse, 0)
             time.sleep(self.dly)
         
-        time.sleep(0.005)
+        time.sleep(0.002)
         GPIO.output(self.en, 0)
         
 MotorRight = motor(Rmotor, pulse, direction, pulseDelay)
@@ -63,8 +63,8 @@ def runAll():
 
 
 start = time.time()
-MotorFront.rotate(1, 800)
+MotorFront.rotate(1, 100)
 end = time.time()
 
 lcd.lcd_clear()
-lcd.lcd_display_string("Finished in: " + str(round(end - start, 3)), 1)
+lcd.lcd_display_string("Time: " + str(round(end - start, 3)), 1)

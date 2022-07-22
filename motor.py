@@ -41,7 +41,9 @@ class motor:
             time.sleep(self.dly)
             GPIO.output(self.pulse, 0)
             time.sleep(self.dly)
-            
+        
+        time.sleep(self.dly)
+        
         if direction == 1:
             direction = 0
             GPIO.output(self.en, 1)

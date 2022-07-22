@@ -2,7 +2,7 @@ import RPi.GPIO as GPIO
 import time
 import I2C_LCD_driver as LCD
 
-GPIO.setup(GPIO.BCM)
+GPIO.setmode(GPIO.BCM)
 
 lcd = LCD.lcd()
 

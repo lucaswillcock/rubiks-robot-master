@@ -1,12 +1,8 @@
 import RPi.GPIO as GPIO
 import time
 import I2C_LCD_driver as LCD
-GPIO.setmode(GPIO.BCM)
 
 lcd = LCD.lcd()
-
-lcd.lcd_clear()
-lcd.lcd_display_string("Hello mum!", 1)
 
 pulseDelay = 0.0002
 
@@ -43,20 +39,6 @@ class motor:
             time.sleep(self.dly)
         
         time.sleep(self.dly)
-        
-        if direction == 1:
-            direction = 0
-            GPIO.output(self.pulse, 1)
-            time.sleep(self.dly)
-            GPIO.output(self.pulse, 0)
-            
-        elif direction == 0:
-            direction = 1
-            GPIO.output(self.pulse, 1)
-            time.sleep(self.dly)
-            GPIO.output(self.pulse, 0)
-        
-        #time.sleep(1)
         GPIO.output(self.en, 0)
         
 MotorRight = motor(Rmotor, pulse, direction, pulseDelay)

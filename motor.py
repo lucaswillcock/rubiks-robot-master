@@ -8,7 +8,7 @@ lcd = LCD.lcd()
 lcd.lcd_clear()
 lcd.lcd_display_string("Hello mum!", 1)
 
-pulseDelay = 0.00013
+pulseDelay = 0.00015
 
 pulse = 27
 direction = 17
@@ -42,7 +42,7 @@ class motor:
             GPIO.output(self.pulse, 0)
             time.sleep(self.dly)
             
-        time.sleep(0.015)
+        time.sleep(0.02)
         GPIO.output(self.en, 0)
         
 MotorRight = motor(Rmotor, pulse, direction, pulseDelay)

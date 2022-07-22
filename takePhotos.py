@@ -38,3 +38,6 @@ def photoBottom():
     ringLeft.off()
     time.sleep(1)
     takePhoto(0, "bottom.png")
+    
+    photoBottom()
+    photoTop()

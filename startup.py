@@ -42,7 +42,7 @@ GPIO.output(Fmotor, 0)
 
 pixels = neopixel.NeoPixel(board.D18, 96)
 
-pixels.fill((255, 55, 55))
+pixels.fill((55, 55, 55))
 
 LCD.lcd_clear()
 LCD.lcd_display_string("Welcome Lucas.", 1)

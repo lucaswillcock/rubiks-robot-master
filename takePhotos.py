@@ -39,5 +39,5 @@ def photoBottom():
     time.sleep(1)
     takePhoto(0, "bottom.png")
     
-    photoBottom()
-    photoTop()
+photoBottom()
+photoTop()

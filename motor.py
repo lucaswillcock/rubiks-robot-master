@@ -42,7 +42,13 @@ class motor:
             GPIO.output(self.pulse, 0)
             time.sleep(self.dly)
             
-        time.sleep(0.02)
+        if direction == 1:
+            direction = 0
+            GPIO.output(self.en, 1)
+        elif direction == 0:
+            direction = 1
+            GPIO.output(self.en, 1)
+        
         GPIO.output(self.en, 0)
         
 MotorRight = motor(Rmotor, pulse, direction, pulseDelay)
@@ -60,5 +66,7 @@ def runAll():
     MotorFront.rotate(1, 200)
     MotorBack.rotate(1, 200)
     
-for i in range(1):
-    runAll()
+#for i in range(1):
+#    runAll()
+
+MotorFront.rotate(1, 100)

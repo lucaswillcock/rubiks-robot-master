@@ -60,5 +60,9 @@ def runAll():
     
 #for i in range(1):
 #    runAll()
-
+start = time.time()
 MotorFront.rotate(1, 800)
+end = time.time()
+
+lcd.lcd_clear()
+lcd.lcd_display_string("Finished in: " + str(round(end - start, 3)), 1)

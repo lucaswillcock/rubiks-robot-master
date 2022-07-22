@@ -14,7 +14,7 @@ class ledRing:
             
     def on(self, colour):
         for i in range(len(self.pixels)):
-            leds[self.pixels[i+1]] = colour
+            leds[self.pixels[i-1]] = colour
             
             
             

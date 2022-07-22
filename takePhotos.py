@@ -9,4 +9,4 @@ def takePhoto(port, imageName):
         camera0.release()
         
 
-takePhoto(0, "bottom.png")
+takePhoto(3, "bottom.png")

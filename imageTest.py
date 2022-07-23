@@ -1,4 +1,3 @@
-from turtle import pos
 import cv2 as cv
 import time
 import imutils
@@ -8,7 +7,7 @@ from collections import Counter
 import pandas as pd
 import math
 
-image = "topCopy.png"
+image = "copyTop.png"
 #process the image to be looked at
 imageTop = cv.imread(image)
 imageTop = imutils.rotate(imageTop, 180)
@@ -32,12 +31,12 @@ yL = y + 270
 imageTop = cv.rectangle(imageTop, (x, y) , (xL, yL), orange, lineSize)
 
 listOrange = [
-    (320, 165),
-    (280, 140),
-    (235 ,110),
-    (320, 220),
-    (280, 195),
-    (240, 160),
+    (250, 165),
+    (210, 150),
+    (160 ,120),
+    (250, 220),
+    (210, 195),
+    (170, 165),
     (320, 270),
     (290, 240),
     (260, 227)

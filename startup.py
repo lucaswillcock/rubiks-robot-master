@@ -50,7 +50,7 @@ ringFront = ledssss.ledRing(6)
 
 ringBack.on((0, 0, 60))
 ringUp.on((20, 20, 20))
-ringLeft.on((50, 10, 50))
+ringLeft.on((50, 10, 0))
 ringDown.on((30, 30, 0))
 ringRight.on((60, 0, 0))
 ringFront.on((0, 60, 0))

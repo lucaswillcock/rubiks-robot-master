@@ -50,7 +50,7 @@ GPIO.output(Fmotor, 0)
 
 ringBack.on((0, 0, 60))
 ringUp.on((20, 20, 20))
-ringLeft.on((30, 15, 15))
+ringLeft.on((40, 20, 0))
 ringDown.on((30, 30, 0))
 ringRight.on((60, 0, 0))
 ringFront.on((0, 60, 0))

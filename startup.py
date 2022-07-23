@@ -48,8 +48,6 @@ GPIO.output(Lmotor, 0)
 GPIO.output(Dmotor, 0)
 GPIO.output(Fmotor, 0)
 
-pixels = neopixel.NeoPixel(board.D18, 96)
-
 ringBack.on((0, 0, 60))
 ringUp.on((20, 20, 20))
 ringLeft.on((30, 15, 15))

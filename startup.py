@@ -13,6 +13,7 @@ ringLeft = ledssss.ledRing(3)
 ringDown = ledssss.ledRing(4)
 ringRight = ledssss.ledRing(5)
 ringFront = ledssss.ledRing(6)
+print("leds ready")
 
 for i in range(4):
     delay = 0.2

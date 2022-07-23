@@ -3,6 +3,7 @@ import neopixel
 import I2C_LCD_driver
 import RPi.GPIO as GPIO
 import time
+import ledssss
 
 LCD = I2C_LCD_driver.lcd()
 
@@ -40,9 +41,19 @@ GPIO.output(Lmotor, 0)
 GPIO.output(Dmotor, 0)
 GPIO.output(Fmotor, 0)
 
-pixels = neopixel.NeoPixel(board.D18, 96)
+ringBack = ledssss.ledRing(1)
+ringUp = ledssss.ledRing(2)
+ringLeft = ledssss.ledRing(3)
+ringDown = ledssss.ledRing(4)
+ringRight = ledssss.ledRing(5)
+ringFront = ledssss.ledRing(6)
 
-pixels.fill((55, 55, 55))
+ringBack.on((0, 50, 0))
+ringUp.on((0, 0, 50))
+ringLeft.on((50, 0, 50))
+ringDown.on((50, 0, 0))
+ringRight.on((50, 50, 0))
+ringFront.on((0, 50, 50))
 
 LCD.lcd_clear()
 LCD.lcd_display_string("Welcome Lucas.", 1)

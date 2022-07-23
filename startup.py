@@ -53,7 +53,7 @@ ringUp.on((20, 20, 20))
 ringLeft.on((50, 10, 50))
 ringDown.on((30, 30, 0))
 ringRight.on((60, 0, 0))
-ringFront.on((0, 60, 50))
+ringFront.on((0, 60, 0))
 
 LCD.lcd_clear()
 LCD.lcd_display_string("Welcome Lucas.", 1)

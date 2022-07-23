@@ -3,17 +3,8 @@ import neopixel
 import I2C_LCD_driver
 import RPi.GPIO as GPIO
 import time
-import ledssss
 
 LCD = I2C_LCD_driver.lcd()
-
-ringBack = ledssss.ledRing(1)
-ringUp = ledssss.ledRing(2)
-ringLeft = ledssss.ledRing(3)
-ringDown = ledssss.ledRing(4)
-ringRight = ledssss.ledRing(5)
-ringFront = ledssss.ledRing(6)
-print("leds ready")
 
 for i in range(4):
     delay = 0.2
@@ -49,12 +40,9 @@ GPIO.output(Lmotor, 0)
 GPIO.output(Dmotor, 0)
 GPIO.output(Fmotor, 0)
 
-ringBack.on((0, 0, 60))
-ringUp.on((20, 20, 20))
-ringLeft.on((50, 10, 0))
-ringDown.on((30, 30, 0))
-ringRight.on((60, 0, 0))
-ringFront.on((0, 60, 0))
+pixels = neopixel.NeoPixel(board.D18, 96)
+
+pixels.fill((55, 55, 55))
 
 LCD.lcd_clear()
 LCD.lcd_display_string("Welcome Lucas.", 1)

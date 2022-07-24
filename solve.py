@@ -1,4 +1,3 @@
-from Obselete.main import CCW
 import RPi.GPIO as GPIO
 import time
 import I2C_LCD_driver as LCD

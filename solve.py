@@ -47,6 +47,18 @@ class motor:
             time.sleep(self.dly)
         
         #time.sleep(0.05)
+        if direction == 0:
+            GPIO.output(self.dir, 1)
+            GPIO.output(self.pulse, 1)
+            time.sleep(self.dly)
+            GPIO.output(self.pulse, 0)
+            time.sleep(self.dly)
+        elif direction == 1:
+            GPIO.output(self.dir, 0)
+            GPIO.output(self.pulse, 1)
+            time.sleep(self.dly)
+            GPIO.output(self.pulse, 0)
+            time.sleep(self.dly)
         GPIO.output(self.en, 0)
         
 RMotor = motor(Rmotor, pulse, directionPin, pulseDelay)

@@ -30,8 +30,8 @@ orange2 = (255, 230, 165)
 yellow3 = (247, 255, 174)
 
 rgb_list = [white, red, green, yellow, orange, blue, blue2, yellow2, orange2, yellow3]
-names_list = ["U", "R", "F", "D", "L", "B", "B", "D", "L", "D"]
-#names_list = ["White", "Red", "Green", "Yellow", "Orange", "Blue", "Blue", "Yellow", "Orange", "Yellow"]
+#names_list = ["U", "R", "F", "D", "L", "B", "B", "D", "L", "D"]
+names_list = ["White", "Red", "Green", "Yellow", "Orange", "Blue", "Blue", "Yellow", "Orange", "Yellow"]
 
 lineSize = 1
 
@@ -177,8 +177,8 @@ for i in range(len(totalList)):
     cube = cube + totalList[i]
     
 print(cube)
-solution = kociemba.solve(cube)
-print(solution)
+#solution = kociemba.solve(cube)
+#print(solution)
 
 #show result
 cv.imshow("Window", imageTop)

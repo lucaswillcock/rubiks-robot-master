@@ -222,7 +222,7 @@ solution = kociemba.solve(cube)
 print(solution)
 
 #show result
-cv.imshow("Window", imageTop)
-cv.imshow("window2", imageBottom)
-cv.waitKey(0)
-cv.destroyAllWindows()
+#cv.imshow("Window", imageTop)
+#cv.imshow("window2", imageBottom)
+#cv.waitKey(0)
+#cv.destroyAllWindows()

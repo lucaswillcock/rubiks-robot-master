@@ -11,7 +11,7 @@ import kociemba
 import ledssss
 import time
 
-brightness = 30
+brightness = 40
 white = (brightness, brightness, brightness)
 
 ringBack = ledssss.ledRing(1)

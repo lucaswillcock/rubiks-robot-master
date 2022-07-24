@@ -37,7 +37,7 @@ class motor:
         
         GPIO.output(self.en, 0)
         
-    def rotate(self, direction, distance):
+    def rotate(self, direction, distance - 5):
         GPIO.output(self.en, 1)
         GPIO.output(self.dir, direction)
         for i in range(distance):
@@ -59,6 +59,8 @@ class motor:
             time.sleep(self.dly)
             GPIO.output(self.pulse, 0)
             time.sleep(self.dly)
+        
+        
         GPIO.output(self.en, 0)
         
 RMotor = motor(Rmotor, pulse, directionPin, pulseDelay)

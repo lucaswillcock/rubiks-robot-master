@@ -12,7 +12,7 @@ import ledssss
 import time
 
 brightness = 40
-white = (brightness, brightness, brightness)
+white = (brightness + 20, brightness, brightness)
 
 ringBack = ledssss.ledRing(1)
 ringUp = ledssss.ledRing(2)

@@ -114,5 +114,8 @@ def executeMoves(solution):
         elif solutionList[i] == "B2":
             BMotor.rotate(CCW, halfTurn)
             
+    end = time.time()
+    print("Finished in: " + str(round(end - start, 3)))
+            
             
 executeMoves("L2 F2 B L' F' D' B R2 U L' F2 U' B2 U2 D F2 D2 R2 F2 D")

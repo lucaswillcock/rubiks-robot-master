@@ -8,54 +8,13 @@ import pandas as pd
 from webcolors import *
 from scipy.spatial import KDTree
 import kociemba
-import ledssss
-import time
 
-brightness = 40
-white = (brightness + 20, brightness, brightness)
+imageTop = "copyTop.png"
+imageBottom = "copyBottom.png"
 
-ringBack = ledssss.ledRing(1)
-ringUp = ledssss.ledRing(2)
-ringLeft = ledssss.ledRing(3)
-ringDown = ledssss.ledRing(4)
-ringRight = ledssss.ledRing(5)
-ringFront = ledssss.ledRing(6)
-
-def takePhoto(port, imageName):
-        camera0 = cv.VideoCapture(port)
-        _, image = camera0.read()
-        cv.imwrite(imageName, image)
-        print("Image capture successful")
-        camera0.release()
-        return image
-        
-def photoTop():
-    ringBack.on(white)
-    ringUp.on(white)
-    ringLeft.on(white)
-    ringRight.off()
-    ringDown.off()
-    ringFront.off()
-    time.sleep(0.2)
-    image = takePhoto(2, "top.png")
-    time.sleep(0.2)
-    return image
-    
-def photoBottom():
-    ringRight.on(white)
-    ringDown.on(white)
-    ringFront.on(white)
-    ringBack.off()
-    ringUp.off()
-    ringLeft.off()
-    time.sleep(0.2)
-    image = takePhoto(0, "bottom.png")
-    time.sleep(0.2)
-    return image
-    
-imageBottom = photoBottom()
-imageTop = photoTop()
-
+#process the image to be looked at
+imageBottom = cv.imread(imageBottom)
+imageTop = cv.imread(imageTop)
 imageTop = imutils.rotate(imageTop, 180)
 
 #colors as BGR
@@ -222,7 +181,7 @@ solution = kociemba.solve(cube)
 print(solution)
 
 #show result
-#cv.imshow("Window", imageTop)
-#cv.imshow("window2", imageBottom)
-#cv.waitKey(0)
-#cv.destroyAllWindows()
+cv.imshow("Window", imageTop)
+cv.imshow("window2", imageBottom)
+cv.waitKey(0)
+cv.destroyAllWindows()

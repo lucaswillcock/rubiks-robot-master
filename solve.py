@@ -118,4 +118,4 @@ def executeMoves(solution):
     print("Finished in: " + str(round(end - start, 3)))
             
             
-executeMoves("U F' R F R2 D2 L' U R D' R' D2 R2 F2 U' F2 B2 R2 U R2 U2")
+executeMoves("U F2 D2 L2 F' U L2 D' R' B2 R U2 B2 L2 U F2 R2 U B2 U'")

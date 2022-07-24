@@ -18,8 +18,8 @@ Lmotor = 13
 Dmotor = 19
 Fmotor = 26
 
-CW = 1
-CCW = 0
+CW = 0
+CCW = 1
 
 quarterTurn = 100
 halfTurn = 200

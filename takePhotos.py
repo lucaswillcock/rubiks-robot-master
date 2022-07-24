@@ -11,7 +11,7 @@ from webcolors import *
 from scipy.spatial import KDTree
 import kociemba
 
-brightness = 15
+brightness = 30
 white = (brightness, brightness, brightness)
 
 ringBack = ledssss.ledRing(1)

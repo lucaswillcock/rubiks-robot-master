@@ -11,7 +11,7 @@ from webcolors import *
 from scipy.spatial import KDTree
 import kociemba
 
-brightness = 20
+brightness = 10
 white = (brightness, brightness, brightness)
 
 ringBack = ledssss.ledRing(1)
@@ -39,23 +39,23 @@ def takePhoto(port, imageName):
         camera0.release()
         
 def photoTop():
-    # ringBack.on(white)
-    # ringUp.on(white)
-    # ringLeft.on(white)
-    # ringRight.off()
-    # ringDown.off()
-    # ringFront.off()
+    ringBack.on(white)
+    ringUp.on(white)
+    ringLeft.on(white)
+    ringRight.off()
+    ringDown.off()
+    ringFront.off()
     time.sleep(0.2)
     image = takePhoto(2, "top.png")
     return image
     
 def photoBottom():
-    # ringRight.on(white)
-    # ringDown.on(white)
-    # ringFront.on(white)
-    # ringBack.off()
-    # ringUp.off()
-    # ringLeft.off()
+    ringRight.on(white)
+    ringDown.on(white)
+    ringFront.on(white)
+    ringBack.off()
+    ringUp.off()
+    ringLeft.off()
     time.sleep(0.2)
     image = takePhoto(0, "bottom.png")
     return image

@@ -18,8 +18,8 @@ Lmotor = 13
 Dmotor = 19
 Fmotor = 26
 
-CW = 1
-CCW = 0
+CW = 0
+CCW = 1
 
 quarterTurn = 100
 halfTurn = 200
@@ -118,4 +118,4 @@ def executeMoves(solution):
     print("Finished in: " + str(round(end - start, 3)))
             
             
-executeMoves("U F2 D2 L2 F' U L2 D' R' B2 R U2 B2 L2 U F2 R2 U B2 U'")
+executeMoves("B2 R2 L D L' U' F2 D2 R D R2 U F2 R2 U2 B2 D' F2 D2")

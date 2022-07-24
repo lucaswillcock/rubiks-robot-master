@@ -11,7 +11,7 @@ from webcolors import *
 from scipy.spatial import KDTree
 import kociemba
 
-brightness = 10
+brightness = 15
 white = (brightness, brightness, brightness)
 
 ringBack = ledssss.ledRing(1)
@@ -60,8 +60,11 @@ def photoBottom():
     image = takePhoto(0, "bottom.png")
     return image
 
+
 imageTop = photoTop()
 imageBottom = photoBottom()
+
+lightsOut()
 
 imageTop = imutils.rotate(imageTop, 180)
 

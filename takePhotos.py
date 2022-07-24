@@ -59,17 +59,24 @@ imageTop = imutils.rotate(imageTop, 180)
 white = (255, 255 ,255)
 red = (255, 127, 95)
 green = (147, 255, 203)
-yellow = (255, 255, 210)
+black = (0, 0, 0)
 orange = (255, 200, 120)
 blue = (85, 192, 255)
 blue2 = (186, 253, 255)
-yellow2 = (255, 255, 140)
 orange2 = (255, 230, 165)
-yellow3 = (247, 255, 174)
 
-rgb_list = [white, red, green, yellow, orange, blue, blue2, yellow2, orange2, yellow3]
-names_list = ["U", "R", "F", "D", "L", "B", "B", "D", "L", "D"]
-#names_list = ["White", "Red", "Green", "Yellow", "Orange", "Blue", "Blue", "Yellow", "Orange", "Yellow"]
+rgb_list = [
+    white, 
+    red, 
+    green, 
+    black, 
+    orange, 
+    blue, 
+    blue2,
+    orange2
+    ]
+names_list = ["U", "R", "F", "D", "L", "B", "B", "L"]
+#names_list = ["White", "Red", "Green", "Black", "Orange", "Blue", "Blue", "Orange"]
 
 lineSize = 1
 

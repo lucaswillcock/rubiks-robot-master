@@ -235,6 +235,7 @@ down = getColours(listDown, imageBottom, "D")
 totalList = []
 totalList = up + right + front + down + left + back
 print(len(totalList))
+
 cube = ""
 
 for i in range(len(totalList)):
@@ -282,7 +283,7 @@ class motor:
     def rotate(self, direction, distance):
         GPIO.output(self.en, 1)
         GPIO.output(self.dir, direction)
-        for i in range(distance - 5):
+        for i in range(distance): #-5
             GPIO.output(self.pulse, 1)
             time.sleep(self.dly)
             GPIO.output(self.pulse, 0)

@@ -12,7 +12,7 @@ from scipy.spatial import KDTree
 import kociemba
 
 brightness = 30
-white = (brightness, brightness, brightness)
+white = (brightness, brightness - 2, brightness - 4)
 
 ringBack = ledssss.ledRing(1)
 ringUp = ledssss.ledRing(2)

@@ -289,6 +289,8 @@ class motor:
             time.sleep(self.dly)
             GPIO.output(self.pulse, 0)
             time.sleep(self.dly)
+            
+        print(direction)
         
         #time.sleep(0.05)
         if direction == 0:
@@ -304,6 +306,7 @@ class motor:
             GPIO.output(self.pulse, 0)
             time.sleep(self.dly)
         
+        print(direction)
         
         GPIO.output(self.en, 0)
         
@@ -318,6 +321,7 @@ def executeMoves(solution):
     solutionList = solution.split()
     start = time.time()
     for i in range(len(solutionList)):
+        print(solutionList[i])
         if solutionList[i] == "U":
             UMotor.rotate(CW, quarterTurn)
         

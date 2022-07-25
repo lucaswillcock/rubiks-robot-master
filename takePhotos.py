@@ -12,7 +12,7 @@ from scipy.spatial import KDTree
 import kociemba
 
 brightness = 30
-white = (brightness, brightness - 2, brightness - 4)
+whiteLight = (brightness, brightness - 2, brightness - 4)
 
 ringBack = ledssss.ledRing(1)
 ringUp = ledssss.ledRing(2)
@@ -40,9 +40,9 @@ def takePhoto(port, imageName):
         camera0.release()
         
 def photoTop():
-    ringBack.on(white)
-    ringUp.on(white)
-    ringLeft.on(white)
+    ringBack.on(whiteLight)
+    ringUp.on(whiteLight)
+    ringLeft.on(whiteLight)
     ringRight.off()
     ringDown.off()
     ringFront.off()
@@ -51,9 +51,9 @@ def photoTop():
     return image
     
 def photoBottom():
-    ringRight.on(white)
-    ringDown.on(white)
-    ringFront.on(white)
+    ringRight.on(whiteLight)
+    ringDown.on(whiteLight)
+    ringFront.on(whiteLight)
     ringBack.off()
     ringUp.off()
     ringLeft.off()

@@ -248,7 +248,7 @@ GPIO.setmode(GPIO.BCM)
 
 lcd = LCD.lcd()
 
-pulseDelay = 0.002
+pulseDelay = 0.002 #0.0002
 
 pulse = 27
 directionPin = 17

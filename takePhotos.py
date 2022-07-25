@@ -14,7 +14,7 @@ import RPi.GPIO as GPIO
 import time
 import I2C_LCD_driver as LCD
 
-brightness = 30
+brightness = 25
 whiteLight = (brightness, brightness - 2, brightness - 4)
 
 ringBack = ledssss.ledRing(1)

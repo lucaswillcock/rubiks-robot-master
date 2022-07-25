@@ -332,10 +332,10 @@ def executeMoves(solution):
             UMotor.rotate(CCW, halfTurn)
             
         elif solutionList[i] == "L":
-            LMotor.rotate(CW, quarterTurn)
+            LMotor.rotate(CCW, quarterTurn)
         
         elif solutionList[i] == "L'":
-            LMotor.rotate(CCW, quarterTurn)
+            LMotor.rotate(CW, quarterTurn)
             
         elif solutionList[i] == "L2":
             LMotor.rotate(CCW, halfTurn)

@@ -250,7 +250,7 @@ GPIO.setmode(GPIO.BCM)
 
 lcd = LCD.lcd()
 
-pulseDelay = 0.002 #0.0002
+pulseDelay = 0.0002 #0.0002
 
 pulse = 27
 directionPin = 17
@@ -284,7 +284,7 @@ class motor:
     def rotate(self, direction, distance):
         GPIO.output(self.en, 1)
         GPIO.output(self.dir, direction)
-        for i in range(distance): #-5
+        for i in range(distance - 5): #-5
             GPIO.output(self.pulse, 1)
             time.sleep(self.dly)
             GPIO.output(self.pulse, 0)

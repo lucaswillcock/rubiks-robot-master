@@ -98,7 +98,7 @@ rgb_list = [
     green2,
     green3
     ]
-names_list = ["U", "R", "F", "D", "L", "B", "B", "L", "F", "R", "F"]
+names_list = ["U", "R", "F", "D", "L", "B", "B", "L", "F", "F"]
 #names_list = ["White", "Red", "Green", "Black", "Orange", "Blue", "Blue", "Orange", "Red", "Green"]
 
 lineSize = 1

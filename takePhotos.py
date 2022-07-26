@@ -428,8 +428,6 @@ displayTopLine(str(Dtotal))
 displayTopLine(str(Ltotal))
 displayTopLine(str(Btotal))
 
-
-
 print(totalListRGB)
 
 cube = ""

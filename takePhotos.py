@@ -369,11 +369,11 @@ def getColours(list, image, face):
 
 def displayTopLine(text):
     lcd.lcd_display_string("                ", 1)
-    lcd.lcd_display_string(text)
+    lcd.lcd_display_string(text, 1)
     
 def displayBottomLine(text):
-    lcd.lcd_display_string("                ", 1)
-    lcd.lcd_display_string(text)
+    lcd.lcd_display_string("                ", 2)
+    lcd.lcd_display_string(text, 2)
 
 RMotor = motor(Rmotor, pulse, directionPin, pulseDelay)
 BMotor = motor(Bmotor, pulse, directionPin, pulseDelay)

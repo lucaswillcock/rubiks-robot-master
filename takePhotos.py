@@ -334,7 +334,8 @@ def get_dominant_color(image, k=4, image_processing_size = None):
 
 #returns list of colours based on input list of positions
 def getColours(list, image, face):
-    print("Scanning: " + face)
+    
+    displayTopLine("Scanning: " + face)
     
     faceListasLetters = []
     faceListasRGBvalues = []
@@ -358,7 +359,7 @@ def getColours(list, image, face):
         color = [round(i) for i in color]
         color.reverse()
         color_name = convert(color)
-        print(str(color_name) + str(color) + str(i+1))
+        displayBottomLine(str(color_name) + str(color) + str(i+1))
         faceListasRGBvalues.append(color)
         faceListasLetters.append(color_name)
     
@@ -389,22 +390,26 @@ lightsOut()
 
 imageTop = imutils.rotate(imageTop, 180)
 
-backLetters = getColours(listBack, imageTop, "B")
-leftLetters = getColours(listLeft, imageTop, "L")
-upLetters = getColours(listUp, imageTop, "U")
+backLetters, backRGB = getColours(listBack, imageTop, "B")
+leftLetters, leftRGB = getColours(listLeft, imageTop, "L")
+upLetters, upRGB= getColours(listUp, imageTop, "U")
 
-rightLetters = getColours(listRight, imageBottom, "R")
-frontLetters = getColours(listFront, imageBottom, "F")
-downLetters = getColours(listDown, imageBottom, "D")
+rightLetters, rightRGB = getColours(listRight, imageBottom, "R")
+frontLetters, frontRGB = getColours(listFront, imageBottom, "F")
+downLetters, downRGB = getColours(listDown, imageBottom, "D")
 
-totalList = []
-totalList = upLetters + rightLetters + frontLetters + downLetters + leftLetters + backLetters
-print(len(totalList))
+totalListRGB =[]
+totalListLetters = []
+totalListRGB = upRGB + rightRGB + frontRGB + downRGB + leftRGB + backRGB
+totalListLetters = upLetters + rightLetters + frontLetters + downLetters + leftLetters + backLetters
+print(len(totalListLetters))
+
+print(totalListRGB)
 
 cube = ""
 
-for i in range(len(totalList)):
-    cube = cube + totalList[i]
+for i in range(len(totalListLetters)):
+    cube = cube + totalListLetters[i]
     
 print(cube)
 solution = kociemba.solve(cube)

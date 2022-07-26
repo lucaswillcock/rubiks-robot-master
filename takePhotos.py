@@ -421,12 +421,12 @@ Dtotal = totalListLetters.count("D")
 Ltotal = totalListLetters.count("L")
 Btotal = totalListLetters.count("B")
 
-displayTopLine(str(Utotal))
-displayTopLine(str(Rtotal))
-displayTopLine(str(Ftotal))
-displayTopLine(str(Dtotal))
-displayTopLine(str(Ltotal))
-displayTopLine(str(Btotal))
+displayTopLine("White: " + str(Utotal))
+displayTopLine("Red: " + str(Rtotal))
+displayTopLine("Green: " + str(Ftotal))
+displayTopLine("Black: " + str(Dtotal))
+displayTopLine("Orange: " + str(Ltotal))
+displayTopLine("Blue: " + str(Btotal))
 
 print(totalListRGB)
 

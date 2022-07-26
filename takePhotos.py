@@ -412,6 +412,7 @@ totalListRGB = upRGB + rightRGB + frontRGB + downRGB + leftRGB + backRGB
 totalListLetters = upLetters + rightLetters + frontLetters + downLetters + leftLetters + backLetters
 
 
+lcd.lcd_clear()
 displayTopLine(str(totalListLetters.count("U")))
 
 

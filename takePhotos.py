@@ -164,6 +164,16 @@ listFront = [
     (280, 300)  #9
 ]
 
+def displayTopLine(text):
+    lcd.lcd_display_string("                ", 1)
+    lcd.lcd_display_string(text, 1)
+    print(text)
+    
+def displayBottomLine(text):
+    lcd.lcd_display_string("                ", 2)
+    lcd.lcd_display_string(text, 2)
+    print(text)
+
 #class defines motor object
 class motor:
     def __init__(self, enable, pulse, direction, delay):
@@ -359,7 +369,7 @@ def getColours(list, image, face):
         color = [round(i) for i in color]
         color.reverse()
         color_name = convert(color)
-        displayBottomLine(str(color_name) + str(color) + str(i+1))
+        displayBottomLine(str(i+1) + ". " + str(color_name) + ": " + str(color))
         faceListasRGBvalues.append(color)
         faceListasLetters.append(color_name)
     
@@ -367,14 +377,6 @@ def getColours(list, image, face):
     faceListasLetters[4] = face
     print(face + ": " + str(faceListasLetters))
     return faceListasLetters, faceListasRGBvalues
-
-def displayTopLine(text):
-    lcd.lcd_display_string("                ", 1)
-    lcd.lcd_display_string(text, 1)
-    
-def displayBottomLine(text):
-    lcd.lcd_display_string("                ", 2)
-    lcd.lcd_display_string(text, 2)
 
 RMotor = motor(Rmotor, pulse, directionPin, pulseDelay)
 BMotor = motor(Bmotor, pulse, directionPin, pulseDelay)

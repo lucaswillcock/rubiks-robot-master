@@ -14,7 +14,7 @@ import RPi.GPIO as GPIO
 import time
 import I2C_LCD_driver as LCD
 
-brightness = 20
+brightness = 10
 whiteLight = (brightness, brightness - 2, brightness - 4)
 
 ringBack = ledssss.ledRing(1)
@@ -84,6 +84,7 @@ orange2 = (255, 230, 165)
 green2 = (76, 255, 222)
 red2 = (255, 149, 167)
 green3 = (198, 255, 245)
+#orange3 = (255, 177, 159)
 
 rgb_list = [
     white, 

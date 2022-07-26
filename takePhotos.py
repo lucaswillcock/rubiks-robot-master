@@ -422,10 +422,11 @@ Ltotal = totalListLetters.count("L")
 Btotal = totalListLetters.count("B")
 
 displayTopLine(str(Utotal))
-
-
-
-
+displayTopLine(str(Rtotal))
+displayTopLine(str(Ftotal))
+displayTopLine(str(Dtotal))
+displayTopLine(str(Ltotal))
+displayTopLine(str(Btotal))
 
 
 

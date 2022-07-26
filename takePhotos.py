@@ -369,7 +369,7 @@ def getColours(list, image, face):
         color = [round(i) for i in color]
         color.reverse()
         color_name = convert(color)
-        displayBottomLine(str(i+1) + ". " + str(color_name) + ": " + str(color))
+        displayBottomLine(str(i+1) + ": " + str(color))
         faceListasRGBvalues.append(color)
         faceListasLetters.append(color_name)
     

@@ -406,6 +406,14 @@ totalListRGB = upRGB + rightRGB + frontRGB + downRGB + leftRGB + backRGB
 totalListLetters = upLetters + rightLetters + frontLetters + downLetters + leftLetters + backLetters
 print(len(totalListLetters))
 
+displayTopLine(totalListLetters.count("U"))
+
+
+
+
+
+
+
 print(totalListRGB)
 
 cube = ""

@@ -294,7 +294,7 @@ def takePhoto(port, imageName):
         camera0 = cv.VideoCapture(port)
         _, image = camera0.read()
         cv.imwrite(imageName, image)
-        print("Image capture successful")
+        displayTopLine("Image capture successful")
         return image
         camera0.release()
         

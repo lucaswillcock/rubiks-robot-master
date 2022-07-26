@@ -82,6 +82,7 @@ blue = (85, 192, 255)
 blue2 = (186, 253, 255)
 orange2 = (255, 230, 165)
 green2 = (76, 255, 222)
+red2 = (255, 149, 167)
 
 rgb_list = [
     white, 
@@ -92,10 +93,11 @@ rgb_list = [
     blue, 
     blue2,
     orange2,
-    green2
+    green2,
+    red2
     ]
-names_list = ["U", "R", "F", "D", "L", "B", "B", "L", "F"]
-#names_list = ["White", "Red", "Green", "Black", "Orange", "Blue", "Blue", "Orange"]
+names_list = ["U", "R", "F", "D", "L", "B", "B", "L", "F", "R"]
+#names_list = ["White", "Red", "Green", "Black", "Orange", "Blue", "Blue", "Orange", "Red"]
 
 lineSize = 1
 

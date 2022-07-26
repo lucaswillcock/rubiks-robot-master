@@ -14,9 +14,16 @@ import RPi.GPIO as GPIO
 import time
 import I2C_LCD_driver as LCD
 
+GPIO.setmode(GPIO.BCM)
+
+#Set brightness and colouyr for taking photos
 brightness = 10
 whiteLight = (brightness, brightness - 2, brightness - 4)
 
+#size of lines in graphics, used for debugging visually
+lineSize = 1
+
+#Define led rings by order in chain
 ringBack = ledssss.ledRing(1)
 ringUp = ledssss.ledRing(2)
 ringLeft = ledssss.ledRing(3)
@@ -24,55 +31,28 @@ ringDown = ledssss.ledRing(4)
 ringRight = ledssss.ledRing(5)
 ringFront = ledssss.ledRing(6)
 
-def lightsOut():
-    ringRight.off()
-    ringDown.off()
-    ringFront.off()
-    ringBack.off()
-    ringUp.off()
-    ringLeft.off()
-    
-lightsOut()
+lcd = LCD.lcd()
 
-def takePhoto(port, imageName):
-        camera0 = cv.VideoCapture(port)
-        _, image = camera0.read()
-        cv.imwrite(imageName, image)
-        print("Image capture successful")
-        return image
-        camera0.release()
-        
-def photoTop():
-    ringBack.on(whiteLight)
-    ringUp.on(whiteLight)
-    ringLeft.on(whiteLight)
-    ringRight.off()
-    ringDown.off()
-    ringFront.off()
-    time.sleep(0.2)
-    image = takePhoto(2, "top.png")
-    return image
-    
-def photoBottom():
-    ringRight.on(whiteLight)
-    ringDown.on(whiteLight)
-    ringFront.on(whiteLight)
-    ringBack.off()
-    ringUp.off()
-    ringLeft.off()
-    time.sleep(0.2)
-    image = takePhoto(0, "bottom.png")
-    return image
+pulseDelay = 0.0002 #0.0002
 
+pulse = 27
+directionPin = 17
 
-imageTop = photoTop()
-imageBottom = photoBottom()
+Rmotor = 22
+Bmotor = 5
+Umotor = 6
+Lmotor = 13
+Dmotor = 19
+Fmotor = 26
 
-lightsOut()
+CW = 0
+CCW = 1
 
-imageTop = imutils.rotate(imageTop, 180)
+#400 turns per revolution with DM542 drivers
+quarterTurn = 100
+halfTurn = 200
 
-#colors as BGR
+#colors as RGB
 white = (255, 255 ,255)
 red = (255, 127, 95)
 green = (147, 255, 203)
@@ -82,9 +62,7 @@ blue = (85, 192, 255)
 blue2 = (186, 253, 255)
 orange2 = (255, 230, 165)
 green2 = (76, 255, 222)
-#red2 = (255, 149, 167)
 green3 = (198, 255, 245)
-#orange3 = (255, 177, 159)
 
 rgb_list = [
     white, 
@@ -98,11 +76,22 @@ rgb_list = [
     green2,
     green3
     ]
-names_list = ["U", "R", "F", "D", "L", "B", "B", "L", "F", "F"]
-#names_list = ["White", "Red", "Green", "Black", "Orange", "Blue", "Blue", "Orange", "Red", "Green"]
 
-lineSize = 1
+#List should match above list of colours but with letter associated to that colours side
+names_list = [
+    "U",
+    "R",
+    "F",
+    "D",
+    "L",
+    "B",
+    "B",
+    "L",
+    "F",
+    "F"
+    ]
 
+#Each of these lists defines XY positions of individual cubies for that respective side
 listBack = [
     (160 ,120), #1
     (205, 145), #2
@@ -175,103 +164,7 @@ listFront = [
     (280, 300)  #9
 ]
 
-#get colour as string from RGB
-def convert(rgb):
-    kdt_db = KDTree(rgb_list)
-    
-    distance, index = kdt_db.query(rgb)
-    return  names_list[index]
-
-#returns dominant colour of image as BGR value
-def get_dominant_color(image, k=4, image_processing_size = None):
-    if image_processing_size is not None:
-        image = cv.resize(image, image_processing_size, 
-                            interpolation = cv.INTER_AREA)
-    image = image.reshape((image.shape[0] * image.shape[1], 3)) 
-    clt = KMeans(n_clusters = k)
-    labels = clt.fit_predict(image)
-    label_counts = Counter(labels)
-    dominant_color = clt.cluster_centers_[label_counts.most_common(1)[0][0]]
-    return list(dominant_color)
-
-
-#returns list of colours based on input list of positions
-def getColours(list, image, face):
-    print("Scanning: " + face)
-    
-    listName = []
-    
-    #this loops takes small snippet of colour and gets BGR value for the dominant colour
-    #Then returns cubie value
-    for i in range(len(list)):
-        XY = list[i]
-        x = XY[0]
-        y = XY[1]
-        P1 = (x, y)
-        squareSize = 12
-        P2 = (x + squareSize, y + squareSize)
-        
-        image = cv.rectangle(image, P1, P2, orange, lineSize)
-        image = cv.putText(image, str(i+1), P2, 1, 1, orange)
-        
-        section = image[int(P1[1]):int(P2[1]), int(P1[0]) : int(P2[0])]
-        section = cv.resize(section, (200,200))
-        color = get_dominant_color(section)
-        color = [round(i) for i in color]
-        color.reverse()
-        color_name = convert(color)
-        print(str(color_name) + str(color) + str(i+1))
-        listName.append(color_name)
-    
-    cv.imwrite(face + ".png", image)
-    listName[4] = face
-    print(listName)
-    return listName
-    
-
-back = getColours(listBack, imageTop, "B")
-left = getColours(listLeft, imageTop, "L")
-up = getColours(listUp, imageTop, "U")
-
-right = getColours(listRight, imageBottom, "R")
-front = getColours(listFront, imageBottom, "F")
-down = getColours(listDown, imageBottom, "D")
-
-totalList = []
-totalList = up + right + front + down + left + back
-print(len(totalList))
-
-cube = ""
-
-for i in range(len(totalList)):
-    cube = cube + totalList[i]
-    
-print(cube)
-solution = kociemba.solve(cube)
-print(solution)
-
-GPIO.setmode(GPIO.BCM)
-
-lcd = LCD.lcd()
-
-pulseDelay = 0.0002 #0.0002
-
-pulse = 27
-directionPin = 17
-
-Rmotor = 22
-Bmotor = 5
-Umotor = 6
-Lmotor = 13
-Dmotor = 19
-Fmotor = 26
-
-CW = 0
-CCW = 1
-
-quarterTurn = 100
-halfTurn = 200
-
+#class defines motor object
 class motor:
     def __init__(self, enable, pulse, direction, delay):
         self.en = enable
@@ -313,14 +206,8 @@ class motor:
         print(direction)
         
         GPIO.output(self.en, 0)
-        
-RMotor = motor(Rmotor, pulse, directionPin, pulseDelay)
-BMotor = motor(Bmotor, pulse, directionPin, pulseDelay)
-UMotor = motor(Umotor, pulse, directionPin, pulseDelay)
-LMotor = motor(Lmotor, pulse, directionPin, pulseDelay)
-DMotor = motor(Dmotor, pulse, directionPin, pulseDelay)
-FMotor = motor(Fmotor, pulse, directionPin, pulseDelay)
 
+#executes given string of moves, note motor left is switched as a software fix
 def executeMoves(solution):
     solutionList = solution.split()
     start = time.time()
@@ -382,6 +269,145 @@ def executeMoves(solution):
             
     end = time.time()
     print("Finished in: " + str(round(end - start, 3)))
-            
+
+#Turns all lights off, takes no argument
+def lightsOut():
+    ringRight.off()
+    ringDown.off()
+    ringFront.off()
+    ringBack.off()
+    ringUp.off()
+    ringLeft.off()
+
+#takes photo from given port, saves and returns image
+def takePhoto(port, imageName):
+        camera0 = cv.VideoCapture(port)
+        _, image = camera0.read()
+        cv.imwrite(imageName, image)
+        print("Image capture successful")
+        return image
+        camera0.release()
+        
+#takes photo from top camera with backlighting
+def photoTop():
+    ringBack.on(whiteLight)
+    ringUp.on(whiteLight)
+    ringLeft.on(whiteLight)
+    ringRight.off()
+    ringDown.off()
+    ringFront.off()
+    time.sleep(0.2)
+    image = takePhoto(2, "top.png")
+    return image
+
+#takes photo from bottom camera with backlighting  
+def photoBottom():
+    ringRight.on(whiteLight)
+    ringDown.on(whiteLight)
+    ringFront.on(whiteLight)
+    ringBack.off()
+    ringUp.off()
+    ringLeft.off()
+    time.sleep(0.2)
+    image = takePhoto(0, "bottom.png")
+    return image
+
+#get colour as string from RGB
+def convert(rgb):
+    
+    kdt_db = KDTree(rgb_list)
+    distance, index = kdt_db.query(rgb)
+    return  names_list[index]
+
+#returns dominant colour of image as BGR value
+def get_dominant_color(image, k=4, image_processing_size = None):
+    if image_processing_size is not None:
+        image = cv.resize(image, image_processing_size, 
+                            interpolation = cv.INTER_AREA)
+    image = image.reshape((image.shape[0] * image.shape[1], 3)) 
+    clt = KMeans(n_clusters = k)
+    labels = clt.fit_predict(image)
+    label_counts = Counter(labels)
+    dominant_color = clt.cluster_centers_[label_counts.most_common(1)[0][0]]
+    return list(dominant_color)
+
+
+#returns list of colours based on input list of positions
+def getColours(list, image, face):
+    print("Scanning: " + face)
+    
+    faceListasLetters = []
+    faceListasRGBvalues = []
+    
+    #this loops takes small snippet of colour and gets BGR value for the dominant colour
+    #Then returns cubie value
+    for i in range(len(list)):
+        XY = list[i]
+        x = XY[0]
+        y = XY[1]
+        P1 = (x, y)
+        squareSize = 12
+        P2 = (x + squareSize, y + squareSize)
+        
+        image = cv.rectangle(image, P1, P2, orange, lineSize)
+        image = cv.putText(image, str(i+1), P2, 1, 1, orange)
+        
+        section = image[int(P1[1]):int(P2[1]), int(P1[0]) : int(P2[0])]
+        section = cv.resize(section, (200,200))
+        color = get_dominant_color(section)
+        color = [round(i) for i in color]
+        color.reverse()
+        color_name = convert(color)
+        print(str(color_name) + str(color) + str(i+1))
+        faceListasRGBvalues.append(color)
+        faceListasLetters.append(color_name)
+    
+    cv.imwrite(face + ".png", image)
+    faceListasLetters[4] = face
+    print(faceListasLetters)
+    return faceListasLetters, faceListasRGBvalues
+
+def displayTopLine(text):
+    lcd.lcd_display_string("                ", 1)
+    lcd.lcd_display_string(text)
+    
+def displayBottomLine(text):
+    lcd.lcd_display_string("                ", 1)
+    lcd.lcd_display_string(text)
+
+RMotor = motor(Rmotor, pulse, directionPin, pulseDelay)
+BMotor = motor(Bmotor, pulse, directionPin, pulseDelay)
+UMotor = motor(Umotor, pulse, directionPin, pulseDelay)
+LMotor = motor(Lmotor, pulse, directionPin, pulseDelay)
+DMotor = motor(Dmotor, pulse, directionPin, pulseDelay)
+FMotor = motor(Fmotor, pulse, directionPin, pulseDelay)
+
+imageTop = photoTop()
+imageBottom = photoBottom()
+
+lightsOut()
+
+imageTop = imutils.rotate(imageTop, 180)
+
+backLetters = getColours(listBack, imageTop, "B")
+leftLetters = getColours(listLeft, imageTop, "L")
+upLetters = getColours(listUp, imageTop, "U")
+
+rightLetters = getColours(listRight, imageBottom, "R")
+frontLetters = getColours(listFront, imageBottom, "F")
+downLetters = getColours(listDown, imageBottom, "D")
+
+totalList = []
+totalList = upLetters + rightLetters + frontLetters + downLetters + leftLetters + backLetters
+print(len(totalList))
+
+cube = ""
+
+for i in range(len(totalList)):
+    cube = cube + totalList[i]
+    
+print(cube)
+solution = kociemba.solve(cube)
+print(solution)
             
 executeMoves(solution)

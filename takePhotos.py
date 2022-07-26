@@ -365,7 +365,7 @@ def getColours(list, image, face):
     
     cv.imwrite(face + ".png", image)
     faceListasLetters[4] = face
-    print(face + ": " + faceListasLetters)
+    print(face + ": " + str(faceListasLetters))
     return faceListasLetters, faceListasRGBvalues
 
 def displayTopLine(text):

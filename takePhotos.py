@@ -369,7 +369,7 @@ def getColours(list, image, face):
         color = [round(i) for i in color]
         color.reverse()
         color_name = convert(color)
-        displayBottomLine(str(i+1) + ": " + str(color))
+        displayBottomLine(str(i+1) + ":" + str(color))
         faceListasRGBvalues.append(color)
         faceListasLetters.append(color_name)
     
@@ -413,7 +413,15 @@ totalListLetters = upLetters + rightLetters + frontLetters + downLetters + leftL
 
 
 lcd.lcd_clear()
-displayTopLine(str(totalListLetters.count("U")))
+
+Utotal = totalListLetters.count("U")
+Rtotal = totalListLetters.count("R")
+Ftotal = totalListLetters.count("F")
+Dtotal = totalListLetters.count("D")
+Ltotal = totalListLetters.count("L")
+Btotal = totalListLetters.count("B")
+
+displayTopLine(str(Utotal))
 
 
 

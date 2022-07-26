@@ -378,6 +378,7 @@ def getColours(list, image, face):
     print(face + ": " + str(faceListasLetters))
     return faceListasLetters, faceListasRGBvalues
 
+#Create and define motor objects
 RMotor = motor(Rmotor, pulse, directionPin, pulseDelay)
 BMotor = motor(Bmotor, pulse, directionPin, pulseDelay)
 UMotor = motor(Umotor, pulse, directionPin, pulseDelay)
@@ -385,13 +386,17 @@ LMotor = motor(Lmotor, pulse, directionPin, pulseDelay)
 DMotor = motor(Dmotor, pulse, directionPin, pulseDelay)
 FMotor = motor(Fmotor, pulse, directionPin, pulseDelay)
 
+#Take photos
 imageTop = photoTop()
 imageBottom = photoBottom()
 
+#lighyts off
 lightsOut()
 
+#rotate top image
 imageTop = imutils.rotate(imageTop, 180)
 
+#get lists of faces
 backLetters, backRGB = getColours(listBack, imageTop, "B")
 leftLetters, leftRGB = getColours(listLeft, imageTop, "L")
 upLetters, upRGB= getColours(listUp, imageTop, "U")
@@ -400,13 +405,14 @@ rightLetters, rightRGB = getColours(listRight, imageBottom, "R")
 frontLetters, frontRGB = getColours(listFront, imageBottom, "F")
 downLetters, downRGB = getColours(listDown, imageBottom, "D")
 
+#combine lists in  correct order for solving
 totalListRGB =[]
 totalListLetters = []
 totalListRGB = upRGB + rightRGB + frontRGB + downRGB + leftRGB + backRGB
 totalListLetters = upLetters + rightLetters + frontLetters + downLetters + leftLetters + backLetters
-print(len(totalListLetters))
 
-displayTopLine(totalListLetters.count("U"))
+
+displayTopLine(str(totalListLetters.count("U")))
 
 
 

@@ -1,37 +1,7 @@
 import cv2 as cv
-import time
-import imutils
-import numpy as np
-from sklearn.cluster import KMeans
-from collections import Counter
-import pandas as pd
-from webcolors import *
-from scipy.spatial import KDTree
-import kociemba
 
 imageTop = "copyTop.png"
 imageBottom = "copyBottom.png"
-
-#process the image to be looked at
-imageBottom = cv.imread(imageBottom)
-imageTop = cv.imread(imageTop)
-imageTop = imutils.rotate(imageTop, 180)
-
-#colors as BGR
-white = (255, 255 ,255)
-red = (255, 127, 95)
-green = (147, 255, 203)
-yellow = (255, 255, 210)
-orange = (255, 200, 120)
-blue = (85, 192, 255)
-blue2 = (186, 253, 255)
-yellow2 = (255, 255, 140)
-orange2 = (255, 230, 165)
-yellow3 = (247, 255, 174)
-
-rgb_list = [white, red, green, yellow, orange, blue, blue2, yellow2, orange2, yellow3]
-names_list = ["U", "R", "F", "D", "L", "B", "B", "D", "L", "D"]
-#names_list = ["White", "Red", "Green", "Yellow", "Orange", "Blue", "Blue", "Yellow", "Orange", "Yellow"]
 
 lineSize = 1
 
@@ -107,32 +77,8 @@ listFront = [
     (280, 300)  #9
 ]
 
-#get colour as string from RGB
-def convert(rgb):
-    kdt_db = KDTree(rgb_list)
-    
-    distance, index = kdt_db.query(rgb)
-    return  names_list[index]
-
-#returns dominant colour of image as BGR value
-def get_dominant_color(image, k=4, image_processing_size = None):
-    if image_processing_size is not None:
-        image = cv.resize(image, image_processing_size, 
-                            interpolation = cv.INTER_AREA)
-    image = image.reshape((image.shape[0] * image.shape[1], 3)) 
-    clt = KMeans(n_clusters = k)
-    labels = clt.fit_predict(image)
-    label_counts = Counter(labels)
-    dominant_color = clt.cluster_centers_[label_counts.most_common(1)[0][0]]
-    return list(dominant_color)
-
-
 #returns list of colours based on input list of positions
 def getColours(list, image, face):
-    print("Scanning: " + face)
-    
-    listName = []
-    
     #this loops takes small snippet of colour and gets BGR value for the dominant colour
     #Then returns cubie value
     for i in range(len(list)):
@@ -143,42 +89,17 @@ def getColours(list, image, face):
         squareSize = 12
         P2 = (x + squareSize, y + squareSize)
         
-        image = cv.rectangle(image, P1, P2, orange, lineSize)
-        image = cv.putText(image, str(i+1), P2, 1, 1, orange)
-        
-        section = image[int(P1[1]):int(P2[1]), int(P1[0]) : int(P2[0])]
-        section = cv.resize(section, (200,200))
-        color = get_dominant_color(section)
-        color = [round(i) for i in color]
-        color.reverse()
-        color_name = convert(color)
-        print(str(color_name) + str(color) + str(i+1))
-        listName.append(color_name)
-    
-    listName[4] = face
-    print(listName)
-    return listName
+        image = cv.rectangle(image, P1, P2, blue, lineSize)
+        image = cv.putText(image, str(i+1), P2, 1, 1, blue)
     
 
-back = getColours(listBack, imageTop, "B")
-left = getColours(listLeft, imageTop, "L")
-up = getColours(listUp, imageTop, "U")
+getColours(listBack, imageTop, "B")
+getColours(listLeft, imageTop, "L")
+getColours(listUp, imageTop, "U")
 
-right = getColours(listRight, imageBottom, "R")
-front = getColours(listFront, imageBottom, "F")
-down = getColours(listDown, imageBottom, "D")
-
-totalList = []
-totalList = up + right + front + down + left + back
-print(len(totalList))
-cube = ""
-
-for i in range(len(totalList)):
-    cube = cube + totalList[i]
-    
-print(cube)
-solution = kociemba.solve(cube)
-print(solution)
+getColours(listRight, imageBottom, "R")
+getColours(listFront, imageBottom, "F")
+getColours(listDown, imageBottom, "D")
 
 #show result
 cv.imshow("Window", imageTop)

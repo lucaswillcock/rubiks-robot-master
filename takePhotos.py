@@ -1,6 +1,5 @@
 import cv2 as cv
 import ledssss
-import time
 import cv2 as cv
 import imutils
 import numpy as np
@@ -16,7 +15,7 @@ import I2C_LCD_driver as LCD
 
 GPIO.setmode(GPIO.BCM)
 
-#Set brightness and colouyr for taking photos
+#Set brightness and colour for taking photos
 brightness = 10
 whiteLight = (brightness, brightness - 2, brightness - 4)
 
@@ -431,7 +430,6 @@ displayTopLine("Blue: " + str(Btotal))
 print(totalListRGB)
 
 cube = ""
-
 for i in range(len(totalListLetters)):
     cube = cube + totalListLetters[i]
     

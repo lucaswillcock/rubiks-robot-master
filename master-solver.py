@@ -56,7 +56,7 @@ red = (255, 127, 95)
 green = (147, 255, 203)
 black = (100, 100, 100)
 orange = (255, 200, 120)
-blue = (85, 192, 255)
+blue = (173, 136, 110)
 blue2 = (186, 253, 255)
 orange2 = (255, 230, 165)
 green2 = (76, 255, 222)
@@ -279,13 +279,13 @@ def executeMoves(solution):
     print("Finished in: " + str(round(end - start, 3)))
 
 #Turns all lights off, takes no argument
-def lightsOut():
-    ringRight.off()
-    ringDown.off()
-    ringFront.off()
-    ringBack.off()
-    ringUp.off()
-    ringLeft.off()
+def lightsAll(color):
+    ringRight.on(color)
+    ringDown.on(color)
+    ringFront.on(color)
+    ringBack.on(color)
+    ringUp.on(color)
+    ringLeft.on(color)
 
 #takes photo from given port, saves and returns image
 def takePhoto(port, imageName):
@@ -387,10 +387,10 @@ imageTop = photoTop()
 imageBottom = photoBottom()
 
 #lighyts off
-lightsOut()
+lightsAll()
 
 #rotate top image
-imageTop = imutils.rotate(imageTop, 180)
+#imageTop = imutils.rotate(imageTop, 180)
 
 #get lists of faces
 backLetters, backRGB = getColours(listBack, imageTop, "B")

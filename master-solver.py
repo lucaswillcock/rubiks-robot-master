@@ -374,21 +374,13 @@ Ltotal = totalListLetters.count("L")
 Btotal = totalListLetters.count("B")
 
 displayTopLine("W:" + str(Utotal) + "R:" + str(Rtotal) + "G:" + str(Ftotal))
-displayBottomLine("Black: " + str(Dtotal))
-displayTopLine("Orange: " + str(Ltotal))
-displayTopLine("Blue: " + str(Btotal))
-
-print(totalListRGB)
+displayBottomLine("B:" + str(Dtotal) + "O:" + str(Ltotal) + "B:" + str(Btotal))
 
 cube = ""
 for i in range(len(totalListLetters)):
     cube = cube + totalListLetters[i]
-    
-print(cube)
+
 solution = kociemba.solve(cube)
 print(solution)
 
-try:
-    executeMoves(solution)
-except:
-    pass
+executeMoves(solution)

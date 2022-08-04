@@ -156,7 +156,7 @@ class motor:
 #executes given string of moves, note motor left is switched as a software fix
 def executeMoves(solution):
     
-    displayBottomLine()
+    displayBottomLine("")
     displayTopLine("3..")
     lightsAll((50, 10, 0))
     time.sleep(1)

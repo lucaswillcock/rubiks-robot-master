@@ -159,14 +159,17 @@ def executeMoves(solution):
     displayBottomLine("")
     displayTopLine("3..")
     lightsAll((50, 10, 0))
+    lightsAll((0, 0, 0))
     time.sleep(1)
     displayTopLine("3.. 2..")
     lightsAll((50, 10, 0))
+    lightsAll((0, 0, 0))
     time.sleep(1)
     displayTopLine("3.. 2.. 1..")
     lightsAll((50, 10, 0))
+    lightsAll((0, 0, 0))
     time.sleep(1)
-    lightsAll((50, 10, 0))
+    lightsAll((0, 40, 0))
     displayTopLine("3.. 2.. 1.. Go!")
     
     

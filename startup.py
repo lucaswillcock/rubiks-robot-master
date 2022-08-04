@@ -3,7 +3,7 @@ import neopixel
 import I2C_LCD_driver
 import RPi.GPIO as GPIO
 import time
-import ledssss
+import ledssss as ledssss
 
 LCD = I2C_LCD_driver.lcd()
 

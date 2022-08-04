@@ -355,8 +355,8 @@ def getColours(list, image, face):
         squareSize = 10
         P2 = (x + squareSize, y + squareSize)
         
-        image = cv.rectangle(image, P1, P2, orange, lineSize)
-        image = cv.putText(image, str(i+1), P2, 1, 1, orange)
+        #image = cv.rectangle(image, P1, P2, orange, lineSize)
+        #image = cv.putText(image, str(i+1), P2, 1, 1, orange)
         
         section = image[int(P1[1]):int(P2[1]), int(P1[0]) : int(P2[0])]
         section = cv.resize(section, (200,200))

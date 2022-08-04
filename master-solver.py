@@ -61,6 +61,7 @@ blue2 = (186, 253, 255)
 orange2 = (255, 230, 165)
 green2 = (76, 255, 222)
 green3 = (198, 255, 245)
+green4 = (98, 253, 172)
 
 rgb_list = [
     white, 
@@ -72,7 +73,8 @@ rgb_list = [
     blue2,
     orange2,
     green2,
-    green3
+    green3,
+    green4
     ]
 
 #List should match above list of colours but with letter associated to that colours side
@@ -85,6 +87,7 @@ names_list = [
     "B",
     "B",
     "L",
+    "F",
     "F",
     "F"
     ]
@@ -433,5 +436,8 @@ for i in range(len(totalListLetters)):
 print(cube)
 solution = kociemba.solve(cube)
 print(solution)
-            
-executeMoves(solution)
+
+try:
+    executeMoves(solution)
+except:
+    pass

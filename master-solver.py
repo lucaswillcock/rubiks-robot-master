@@ -352,7 +352,7 @@ def getColours(list, image, face):
         x = XY[0]
         y = XY[1]
         P1 = (x, y)
-        squareSize = 12
+        squareSize = 10
         P2 = (x + squareSize, y + squareSize)
         
         image = cv.rectangle(image, P1, P2, orange, lineSize)

@@ -387,7 +387,7 @@ imageTop = photoTop()
 imageBottom = photoBottom()
 
 #lighyts off
-lightsAll()
+lightsAll((0, 0, 0))
 
 #rotate top image
 #imageTop = imutils.rotate(imageTop, 180)

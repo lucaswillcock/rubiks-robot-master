@@ -155,6 +155,21 @@ class motor:
 
 #executes given string of moves, note motor left is switched as a software fix
 def executeMoves(solution):
+    
+    displayBottomLine()
+    displayTopLine("3..")
+    lightsAll((50, 10, 0))
+    time.sleep(1)
+    displayTopLine("3.. 2..")
+    lightsAll((50, 10, 0))
+    time.sleep(1)
+    displayTopLine("3.. 2.. 1..")
+    lightsAll((50, 10, 0))
+    time.sleep(1)
+    lightsAll((50, 10, 0))
+    displayTopLine("3.. 2.. 1.. Go!")
+    
+    
     solutionList = solution.split()
     start = time.time()
     for i in range(len(solutionList)):
@@ -214,7 +229,13 @@ def executeMoves(solution):
             BMotor.rotate(CCW, halfTurn)
             
     end = time.time()
-    print("Finished in: " + str(round(end - start, 3)))
+    displayTopLine("Time: " + str(round(end - start, 3)))
+    ringBack.on((0, 0, 60))
+    ringUp.on((20, 20, 20))
+    ringLeft.on((50, 10, 0))
+    ringDown.on((30, 30, 0))
+    ringRight.on((60, 0, 0))
+    ringFront.on((0, 60, 0))
 
 #Turns all lights off, takes no argument
 def lightsAll(color):

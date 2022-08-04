@@ -342,9 +342,6 @@ def get_dominant_color(image, k=4, image_processing_size = None):
 
 #returns list of colours based on input list of positions
 def getColours(list, image, face):
-    
-    displayTopLine("Scanning: " + face)
-    
     faceListasLetters = []
     faceListasRGBvalues = []
     
@@ -367,7 +364,8 @@ def getColours(list, image, face):
         color = [round(i) for i in color]
         color.reverse()
         color_name = convert(color)
-        displayBottomLine(str(i+1) + ":" + str(color))
+        displayTopLine("Scanning: " + face + i + " = " + color_name)
+        displayBottomLine(str(color))
         faceListasRGBvalues.append(color)
         faceListasLetters.append(color_name)
     

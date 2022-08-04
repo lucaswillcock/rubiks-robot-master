@@ -373,8 +373,8 @@ Dtotal = totalListLetters.count("D")
 Ltotal = totalListLetters.count("L")
 Btotal = totalListLetters.count("B")
 
-displayTopLine("W:" + str(Utotal) + "R:" + str(Rtotal) + "G:" + str(Ftotal))
-displayBottomLine("B:" + str(Dtotal) + "O:" + str(Ltotal) + "B:" + str(Btotal))
+displayTopLine("W:" + str(Utotal) + " R:" + str(Rtotal) + " G:" + str(Ftotal))
+displayBottomLine("B:" + str(Dtotal) + " O:" + str(Ltotal) + " B:" + str(Btotal))
 
 cube = ""
 for i in range(len(totalListLetters)):

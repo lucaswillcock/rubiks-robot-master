@@ -95,7 +95,7 @@ def getColours(list, image, face):
         P2 = (x + squareSize, y + squareSize)
         
         image = cv.rectangle(image, P1, P2, blue, lineSize)
-        image = cv.putText(image, str(i+1), P2, 1, 1, blue)
+        image = cv.putText(image, face + str(i+1), P2, 1, 1, blue)
     
 
 getColours(listBack, imageTop, "B")

@@ -93,77 +93,12 @@ names_list = [
     ]
 
 #Each of these lists defines XY positions of individual cubies for that respective side
-listBack = [
-    (190 ,150), #1
-    (225, 175), #2
-    (280, 210), #3
-    (195, 205), #4
-    (240, 235), #5
-    (290, 280), #6
-    (225, 290), #7
-    (250, 300), #8
-    (290, 330)  #9
-]
-
-listLeft = [
-    (350 ,220), #1
-    (400, 180), #2
-    (450, 155), #3
-    (350, 270), #4
-    (400, 240), #5
-    (445, 205), #6
-    (345, 330), #7
-    (395, 295), #8
-    (420, 290)  #9
-]
-
-listUp = [
-    (330 ,170), #1
-    (260, 135), #2
-    (205, 115), #3
-    (370, 135), #4
-    (325, 110), #5
-    (270, 95), #6
-    (410, 110), #7
-    (370, 95), #8
-    (293, 78)  #9
-]
-
-listDown = [
-    (210 ,290), #1
-    (260, 270), #2
-    (320, 240), #3
-    (260, 310), #4
-    (310, 290), #5
-    (370, 260), #6
-    (338, 332), #7
-    (360, 315), #8
-    (400, 290)  #9
-]
-
-listRight = [
-    (330, 80), #1
-    (380, 120), #2
-    (425, 175), #3
-    (330, 120), #4
-    (375, 150), #5
-    (425, 200), #6
-    (330, 180), #7
-    (390, 220), #8
-    (430, 245)  #9
-]
-
-listFront = [
-    (198, 174), #1
-    (250, 120), #2
-    (295, 80), #3
-    (200, 200), #4
-    (240, 160), #5
-    (290, 130), #6
-    (190, 250), #7
-    (230, 230), #8
-    (280, 190)  #9
-]
+listBack = [(190 ,150), (225, 175), (280, 210), (195, 205), (240, 235), (290, 280), (225, 290), (250, 300), (290, 330)]
+listLeft = [(350 ,220), (400, 180), (450, 155), (350, 270), (400, 240), (445, 205), (345, 330), (395, 295), (420, 290)]
+listUp = [(330 ,170), (260, 135), (205, 115), (370, 135), (325, 110), (270, 95), (410, 110), (370, 95), (293, 78)]
+listDown = [(210 ,290), (260, 270), (320, 240), (260, 310), (310, 290), (370, 260), (338, 332), (360, 315), (400, 290)]
+listRight = [(330, 80), (380, 120), (425, 175), (330, 120), (375, 150), (425, 200), (330, 180), (390, 220), (430, 245)]
+listFront = [(198, 174), (250, 120), (295, 80), (200, 200), (240, 160), (290, 130), (190, 250), (230, 230), (280, 190)]
 
 def displayTopLine(text):
     lcd.lcd_display_string("                ", 1)
@@ -392,9 +327,6 @@ imageBottom = photoBottom()
 #lighyts off
 lightsAll((0, 0, 0))
 
-#rotate top image
-#imageTop = imutils.rotate(imageTop, 180)
-
 #get lists of faces
 backLetters, backRGB = getColours(listBack, imageTop, "B")
 leftLetters, leftRGB = getColours(listLeft, imageTop, "L")
@@ -420,10 +352,8 @@ Dtotal = totalListLetters.count("D")
 Ltotal = totalListLetters.count("L")
 Btotal = totalListLetters.count("B")
 
-displayTopLine("White: " + str(Utotal))
-displayTopLine("Red: " + str(Rtotal))
-displayTopLine("Green: " + str(Ftotal))
-displayTopLine("Black: " + str(Dtotal))
+displayTopLine("W:" + str(Utotal) + "R:" + str(Rtotal) + "G:" + str(Ftotal))
+displayBottomLine("Black: " + str(Dtotal))
 displayTopLine("Orange: " + str(Ltotal))
 displayTopLine("Blue: " + str(Btotal))
 

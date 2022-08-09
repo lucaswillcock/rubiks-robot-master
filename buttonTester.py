@@ -7,8 +7,6 @@ GPIO.setmode(GPIO.BCM)
 
 lcd = LCD.lcd()
 
-print(GPIO.input(buttonPin))
-
 GPIO.setup(buttonPin, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
 
 print(GPIO.input(buttonPin))

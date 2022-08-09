@@ -10,7 +10,6 @@ lcd = LCD.lcd()
 GPIO.setup(buttonPin, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
 
 lcd.lcd_display_string("Button not pressed", 1)
-print(GPIO.)
 
 while 1:
     if GPIO.input(buttonPin) == GPIO.HIGH:

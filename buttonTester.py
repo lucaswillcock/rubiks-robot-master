@@ -7,7 +7,11 @@ GPIO.setmode(GPIO.BCM)
 
 lcd = LCD.lcd()
 
+print(GPIO.input(buttonPin))
+
 GPIO.setup(buttonPin, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
+
+print(GPIO.input(buttonPin))
 
 lcd.lcd_display_string("Button not pressed", 1)
 

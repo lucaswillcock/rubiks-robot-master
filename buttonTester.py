@@ -14,6 +14,7 @@ print(GPIO.input(buttonPin))
 lcd.lcd_display_string("Button not pressed", 1)
 
 while 1:
+    print(GPIO.input(buttonPin))
     if GPIO.input(buttonPin) == GPIO.HIGH:
         lcd.lcd_display_string("Button pressed", 1)
-        break
+        

@@ -43,7 +43,9 @@ Lmotor = 13
 Dmotor = 19
 Fmotor = 26
 
+#Button set up
 buttonPin = 21
+GPIO.setup(buttonPin, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
 
 CW = 0
 CCW = 1
@@ -346,46 +348,51 @@ LMotor = motor(Lmotor, pulse, directionPin, pulseDelay)
 DMotor = motor(Dmotor, pulse, directionPin, pulseDelay)
 FMotor = motor(Fmotor, pulse, directionPin, pulseDelay)
 
-#Take photos
-imageTop = photoTop()
-imageBottom = photoBottom()
+while 1:
+    if GPIO.input(buttonPin) == GPIO.HIGH:
+        
+        
+        
+        #Take photos
+        imageTop = photoTop()
+        imageBottom = photoBottom()
 
-#lighyts off
-lightsAll((0, 0, 0))
+        #lighyts off
+        lightsAll((0, 0, 0))
 
-#get lists of faces
-backLetters, backRGB = getColours(listBack, imageTop, "B")
-leftLetters, leftRGB = getColours(listLeft, imageTop, "L")
-upLetters, upRGB= getColours(listUp, imageTop, "U")
+        #get lists of faces
+        backLetters, backRGB = getColours(listBack, imageTop, "B")
+        leftLetters, leftRGB = getColours(listLeft, imageTop, "L")
+        upLetters, upRGB= getColours(listUp, imageTop, "U")
 
-rightLetters, rightRGB = getColours(listRight, imageBottom, "R")
-frontLetters, frontRGB = getColours(listFront, imageBottom, "F")
-downLetters, downRGB = getColours(listDown, imageBottom, "D")
+        rightLetters, rightRGB = getColours(listRight, imageBottom, "R")
+        frontLetters, frontRGB = getColours(listFront, imageBottom, "F")
+        downLetters, downRGB = getColours(listDown, imageBottom, "D")
 
-#combine lists in  correct order for solving
-totalListRGB =[]
-totalListLetters = []
-totalListRGB = upRGB + rightRGB + frontRGB + downRGB + leftRGB + backRGB
-totalListLetters = upLetters + rightLetters + frontLetters + downLetters + leftLetters + backLetters
+        #combine lists in  correct order for solving
+        totalListRGB =[]
+        totalListLetters = []
+        totalListRGB = upRGB + rightRGB + frontRGB + downRGB + leftRGB + backRGB
+        totalListLetters = upLetters + rightLetters + frontLetters + downLetters + leftLetters + backLetters
 
 
-lcd.lcd_clear()
+        lcd.lcd_clear()
 
-Utotal = totalListLetters.count("U")
-Rtotal = totalListLetters.count("R")
-Ftotal = totalListLetters.count("F")
-Dtotal = totalListLetters.count("D")
-Ltotal = totalListLetters.count("L")
-Btotal = totalListLetters.count("B")
+        Utotal = totalListLetters.count("U")
+        Rtotal = totalListLetters.count("R")
+        Ftotal = totalListLetters.count("F")
+        Dtotal = totalListLetters.count("D")
+        Ltotal = totalListLetters.count("L")
+        Btotal = totalListLetters.count("B")
 
-displayTopLine("W:" + str(Utotal) + " R:" + str(Rtotal) + " G:" + str(Ftotal))
-displayBottomLine("B:" + str(Dtotal) + " O:" + str(Ltotal) + " B:" + str(Btotal))
+        displayTopLine("W:" + str(Utotal) + " R:" + str(Rtotal) + " G:" + str(Ftotal))
+        displayBottomLine("B:" + str(Dtotal) + " O:" + str(Ltotal) + " B:" + str(Btotal))
 
-cube = ""
-for i in range(len(totalListLetters)):
-    cube = cube + totalListLetters[i]
+        cube = ""
+        for i in range(len(totalListLetters)):
+            cube = cube + totalListLetters[i]
 
-solution = kociemba.solve(cube)
-print(solution)
+        solution = kociemba.solve(cube)
+        print(solution)
 
-executeMoves(solution)
+        executeMoves(solution)

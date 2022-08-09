@@ -1,7 +1,7 @@
 import I2C_LCD_driver as LCD
 import RPi.GPIO as GPIO
 
-buttonPin = 27
+buttonPin = 21
 
 GPIO.setmode(GPIO.BCM)
 

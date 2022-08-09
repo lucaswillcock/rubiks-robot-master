@@ -7,7 +7,7 @@ GPIO.setmode(GPIO.BCM)
 
 lcd = LCD.lcd()
 
-GPIO.setup(buttonPin, GPIO.IN)
+GPIO.setup(buttonPin, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
 
 while 1:
     if GPIO.input(buttonPin) == GPIO.HIGH:

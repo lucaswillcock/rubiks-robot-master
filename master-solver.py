@@ -43,6 +43,8 @@ Lmotor = 13
 Dmotor = 19
 Fmotor = 26
 
+buttonPin = 21
+
 CW = 0
 CCW = 1
 

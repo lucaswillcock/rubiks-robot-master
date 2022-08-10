@@ -1,8 +1,5 @@
 import cv2 as cv
 import ledssss as ledssss
-import cv2 as cv
-import imutils
-import numpy as np
 from sklearn.cluster import KMeans
 from collections import Counter
 from webcolors import *

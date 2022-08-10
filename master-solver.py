@@ -348,11 +348,19 @@ LMotor = motor(Lmotor, pulse, directionPin, pulseDelay)
 DMotor = motor(Dmotor, pulse, directionPin, pulseDelay)
 FMotor = motor(Fmotor, pulse, directionPin, pulseDelay)
 
-while 1:
-    
+def homeScreen():
+    ringBack.on((0, 0, 60))
+    ringUp.on((20, 20, 20))
+    ringLeft.on((50, 10, 0))
+    ringDown.on((30, 30, 0))
+    ringRight.on((60, 0, 0))
+    ringFront.on((0, 60, 0))
     displayTopLine("#Machine Ready#")
     displayBottomLine("Press to solve...")
     
+homeScreen()
+    
+while 1:
     if GPIO.input(buttonPin) == GPIO.HIGH:
         
         try:
@@ -403,6 +411,9 @@ while 1:
             executeMoves(solution)
             
             time.sleep(10)
+            
+            homeScreen()
+            
         except ValueError:
             lightsAll((60, 0, 0))
             for item in totals:
@@ -414,6 +425,8 @@ while 1:
                     displayBottomLine("Can't find solution")
                     
             time.sleep(10)
+            
+            homeScreen()
         
         except:
             lightsAll((60, 0, 0))
@@ -421,3 +434,5 @@ while 1:
             displayBottomLine("reboot machine")
             
             time.sleep(10)
+            
+            homeScreen()

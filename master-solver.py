@@ -416,9 +416,9 @@ while 1:
                     
             time.sleep(10)
         
-        except Error as e:
+        except:
             lightsAll((60, 0, 0))
-            displayTopLine(e)
-            displayBottomLine("Reboot machine")
+            displayTopLine("ya fucked it")
+            displayBottomLine("reboot machine")
             
             time.sleep(10)

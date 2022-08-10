@@ -10,10 +10,49 @@ from scipy.spatial import KDTree
 import kociemba
 import RPi.GPIO as GPIO
 import time
-import I2C_LCD_driver as LCD
+import I2C_LCD_driver as lcd
 import random
 
 GPIO.setmode(GPIO.BCM)
+
+lcd = lcd.lcd()
+
+for i in range(4):
+    delay = 0.2
+    lcd.lcd_display_string("Booting Pi...  |", 1)
+    time.sleep(delay)
+    lcd.lcd_display_string("Booting Pi...  /", 1)
+    time.sleep(delay)
+    lcd.lcd_display_string("Booting Pi...  -", 1)
+    time.sleep(delay)
+    lcd.lcd_display_string("Booting Pi...  '\'", 1)
+    time.sleep(delay)
+
+Rmotor = 22
+Bmotor = 5
+Umotor = 6
+Lmotor = 13
+Dmotor = 19
+Fmotor = 26
+
+GPIO.setmode(GPIO.BCM)
+
+GPIO.setup(Rmotor, GPIO.OUT)
+GPIO.setup(Bmotor, GPIO.OUT)
+GPIO.setup(Umotor, GPIO.OUT)
+GPIO.setup(Lmotor, GPIO.OUT)
+GPIO.setup(Dmotor, GPIO.OUT)
+GPIO.setup(Fmotor, GPIO.OUT)
+
+GPIO.output(Rmotor, 0)
+GPIO.output(Bmotor, 0)
+GPIO.output(Umotor, 0)
+GPIO.output(Lmotor, 0)
+GPIO.output(Dmotor, 0)
+GPIO.output(Fmotor, 0)
+
+lcd.lcd_clear()
+lcd.lcd_display_string("Welcome Lucas.", 1)
 
 #Set brightness and colour for taking photos
 brightness = 10
@@ -30,19 +69,10 @@ ringDown = ledssss.ledRing(4)
 ringRight = ledssss.ledRing(5)
 ringFront = ledssss.ledRing(6)
 
-lcd = LCD.lcd()
-
 pulseDelay = 0.0002 #0.0002
 
 pulse = 27
 directionPin = 17
-
-Rmotor = 22
-Bmotor = 5
-Umotor = 6
-Lmotor = 13
-Dmotor = 19
-Fmotor = 26
 
 #Button set up
 buttonPin = 21

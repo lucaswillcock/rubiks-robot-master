@@ -1,11 +1,11 @@
-import I2C_LCD_driver as LCD
+import I2C_LCD_driver as lcd
 import RPi.GPIO as GPIO
 
 buttonPin = 21
 
 GPIO.setmode(GPIO.BCM)
 
-lcd = LCD.lcd()
+lcd = lcd.lcd()
 
 GPIO.setup(buttonPin, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
 

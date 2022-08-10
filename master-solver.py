@@ -11,6 +11,7 @@ import kociemba
 import RPi.GPIO as GPIO
 import time
 import I2C_LCD_driver as LCD
+import random
 
 GPIO.setmode(GPIO.BCM)
 
@@ -308,6 +309,7 @@ def get_dominant_color(image, k=4, image_processing_size = None):
 
 #returns list of colours based on input list of positions
 def getColours(list, image, face):
+    lightsAll((random.randint(0, 50), random.randint(0, 50), random.randint(0, 50)))
     faceListasLetters = []
     faceListasRGBvalues = []
     

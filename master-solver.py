@@ -1,3 +1,4 @@
+from msilib.schema import Error
 import cv2 as cv
 import ledssss as ledssss
 import cv2 as cv
@@ -236,7 +237,7 @@ def executeMoves(solution):
             BMotor.rotate(CCW, halfTurn)
             
     end = time.time()
-    displayTopLine("Time: " + str(round(end - start, 3)))
+    displayTopLine("Time: " + str(round(end - start, 3)) + "s")
     ringBack.on((0, 0, 60))
     ringUp.on((20, 20, 20))
     ringLeft.on((50, 10, 0))
@@ -349,50 +350,75 @@ DMotor = motor(Dmotor, pulse, directionPin, pulseDelay)
 FMotor = motor(Fmotor, pulse, directionPin, pulseDelay)
 
 while 1:
+    
+    displayTopLine("#Machine Ready#")
+    displayBottomLine("Press to solve...")
+    
     if GPIO.input(buttonPin) == GPIO.HIGH:
         
+        try:
+            #Take photos
+            imageTop = photoTop()
+            imageBottom = photoBottom()
+
+            #lighyts off
+            lightsAll((0, 0, 0))
+
+            #get lists of faces
+            backLetters, backRGB = getColours(listBack, imageTop, "B")
+            leftLetters, leftRGB = getColours(listLeft, imageTop, "L")
+            upLetters, upRGB= getColours(listUp, imageTop, "U")
+
+            rightLetters, rightRGB = getColours(listRight, imageBottom, "R")
+            frontLetters, frontRGB = getColours(listFront, imageBottom, "F")
+            downLetters, downRGB = getColours(listDown, imageBottom, "D")
+
+            #combine lists in  correct order for solving
+            totalListRGB =[]
+            totalListLetters = []
+            totalListRGB = upRGB + rightRGB + frontRGB + downRGB + leftRGB + backRGB
+            totalListLetters = upLetters + rightLetters + frontLetters + downLetters + leftLetters + backLetters
+
+
+            lcd.lcd_clear()
+
+            Utotal = totalListLetters.count("U")
+            Rtotal = totalListLetters.count("R")
+            Ftotal = totalListLetters.count("F")
+            Dtotal = totalListLetters.count("D")
+            Ltotal = totalListLetters.count("L")
+            Btotal = totalListLetters.count("B")
+            
+            totals = [Utotal, Rtotal, Ftotal, Dtotal, Ltotal, Btotal]
+
+            displayTopLine("W:" + str(Utotal) + " R:" + str(Rtotal) + " G:" + str(Ftotal))
+            displayBottomLine("B:" + str(Dtotal) + " O:" + str(Ltotal) + " B:" + str(Btotal))
+
+            cube = ""
+            for i in range(len(totalListLetters)):
+                cube = cube + totalListLetters[i]
+
+            solution = kociemba.solve(cube)
+            print(solution)
+
+            executeMoves(solution)
+            
+            time.sleep(10)
+        except ValueError:
+            lightsAll((60, 0, 0))
+            for item in totals:
+                if item != 9:
+                    displayTopLine("Error")
+                    displayBottomLine("Couldn't read cube")
+                else:
+                    displayTopLine("Error")
+                    displayBottomLine("Can't find solution")
+                    
+            time.sleep(10)
         
-        
-        #Take photos
-        imageTop = photoTop()
-        imageBottom = photoBottom()
-
-        #lighyts off
-        lightsAll((0, 0, 0))
-
-        #get lists of faces
-        backLetters, backRGB = getColours(listBack, imageTop, "B")
-        leftLetters, leftRGB = getColours(listLeft, imageTop, "L")
-        upLetters, upRGB= getColours(listUp, imageTop, "U")
-
-        rightLetters, rightRGB = getColours(listRight, imageBottom, "R")
-        frontLetters, frontRGB = getColours(listFront, imageBottom, "F")
-        downLetters, downRGB = getColours(listDown, imageBottom, "D")
-
-        #combine lists in  correct order for solving
-        totalListRGB =[]
-        totalListLetters = []
-        totalListRGB = upRGB + rightRGB + frontRGB + downRGB + leftRGB + backRGB
-        totalListLetters = upLetters + rightLetters + frontLetters + downLetters + leftLetters + backLetters
-
-
-        lcd.lcd_clear()
-
-        Utotal = totalListLetters.count("U")
-        Rtotal = totalListLetters.count("R")
-        Ftotal = totalListLetters.count("F")
-        Dtotal = totalListLetters.count("D")
-        Ltotal = totalListLetters.count("L")
-        Btotal = totalListLetters.count("B")
-
-        displayTopLine("W:" + str(Utotal) + " R:" + str(Rtotal) + " G:" + str(Ftotal))
-        displayBottomLine("B:" + str(Dtotal) + " O:" + str(Ltotal) + " B:" + str(Btotal))
-
-        cube = ""
-        for i in range(len(totalListLetters)):
-            cube = cube + totalListLetters[i]
-
-        solution = kociemba.solve(cube)
-        print(solution)
-
-        executeMoves(solution)
+        except Error as e:
+            lightsAll((60, 0, 0))
+            displayTopLine(e)
+            displayBottomLine("Reboot machine")
+            
+            time.sleep(10)

@@ -1,5 +1,6 @@
 import cv2 as cv
 import ledssss as ledssss
+import numpy as np
 from sklearn.cluster import KMeans
 from collections import Counter
 from webcolors import *
@@ -13,7 +14,7 @@ import random
 GPIO.setmode(GPIO.BCM)
 
 #Set brightness and colour for taking photos
-brightness = 50
+brightness = 10
 whiteLight = (brightness, brightness - 2, brightness - 4)
 
 #size of lines in graphics, used for debugging visually
@@ -60,10 +61,11 @@ black = (100, 100, 100)
 orange = (255, 200, 120)
 blue = (55, 190, 255)
 blue2 = (186, 253, 255)
-orange2 = (255, 132, 63)
+orange2 = (255, 230, 165)
 green2 = (76, 255, 222)
 green3 = (198, 255, 245)
 green4 = (98, 253, 172)
+orange3 = (255, 132, 63)
 
 rgb_list = [
     white, 
@@ -76,7 +78,8 @@ rgb_list = [
     orange2,
     green2,
     green3,
-    green4
+    green4,
+    orange3
     ]
 
 #List should match above list of colours but with letter associated to that colours side
@@ -91,7 +94,8 @@ names_list = [
     "L",
     "F",
     "F",
-    "F"
+    "F",
+    "L"
     ]
 
 #Each of these lists defines XY positions of individual cubies for that respective side

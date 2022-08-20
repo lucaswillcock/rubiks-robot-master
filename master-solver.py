@@ -13,7 +13,7 @@ import random
 GPIO.setmode(GPIO.BCM)
 
 #Set brightness and colour for taking photos
-brightness = 25
+brightness = 40
 whiteLight = (brightness, brightness - 2, brightness - 4)
 
 #size of lines in graphics, used for debugging visually

@@ -54,11 +54,11 @@ quarterTurn = 100
 halfTurn = 200
 
 #colors as RGB
-white = (255, 255 ,255)
-red = (255, 127, 95)
+white = (239, 202, 230)
+red = (255, 72, 38)
 green = (147, 255, 203)
-black = (100, 100, 100)
-orange = (255, 138, 85)
+black = (103, 75, 71)
+orange = (255, 128, 56)
 blue = (55, 190, 255)
 blue2 = (186, 253, 255)
 orange2 = (255, 230, 165)

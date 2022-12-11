@@ -65,8 +65,7 @@ orange2 = (255, 230, 165)
 green2 = (76, 255, 222)
 green3 = (198, 255, 245)
 green4 = (98, 253, 172)
-orange3 = (255, 132, 63)
-red2 = (255, 104, 52)
+red2 = (255, 127, 85)
 white1 = (127, 106, 119)
 
 rgb_list = [
@@ -81,7 +80,6 @@ rgb_list = [
     green2,
     green3,
     green4,
-    orange3,
     red2,
     white1
     ]
@@ -99,7 +97,6 @@ names_list = [
     "F",
     "F",
     "F",
-    "L",
     "R",
     "U"
     ]

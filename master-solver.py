@@ -66,7 +66,9 @@ red1 = (255, 82, 54)
 green1 = (41, 173, 254)
 black1 = (62, 48, 36)
 orange1 = (255, 170, 138)
-blue1 = (39, 138, 200)
+blue1 = (66, 161, 255)
+
+green2 = (128, 238, 188)
 
 rgb_list = [
     white, 
@@ -81,7 +83,10 @@ rgb_list = [
     green1, 
     black1, 
     orange1, 
-    blue1
+    blue1,
+    
+    green2
+    
     ]
 
 #List should match above list of colours but with letter associated to that colours side
@@ -97,7 +102,8 @@ names_list = [
     "F",
     "D",
     "L",
-    "B"
+    "B",
+    "F"
     ]
 
 #Each of these lists defines XY positions of individual cubies for that respective side

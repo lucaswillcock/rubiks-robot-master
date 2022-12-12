@@ -69,6 +69,7 @@ orange1 = (124, 57, 46)
 blue1 = (66, 161, 255)
 
 green2 = (128, 238, 188)
+orange2 = (255, 194, 150)
 
 rgb_list = [
     white, 
@@ -85,7 +86,8 @@ rgb_list = [
     orange1, 
     blue1,
     
-    green2
+    green2,
+    orange2
     
     ]
 
@@ -103,7 +105,8 @@ names_list = [
     "D",
     "L",
     "B",
-    "F"
+    "F",
+    "L"
     ]
 
 #Each of these lists defines XY positions of individual cubies for that respective side

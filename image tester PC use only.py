@@ -1,8 +1,8 @@
 import cv2 as cv
 import imutils
 
-imageTop = cv.imread("copyTop.png")
-imageBottom = cv.imread("copyBottom.png")
+imageTop = cv.imread("topCopy.png")
+imageBottom = cv.imread("bottomCopy.png")
 
 #imageTop = imutils.rotate(imageTop, 180)
 
@@ -17,7 +17,7 @@ listBack = [
     (195, 205), #4
     (240, 235), #5
     (290, 280), #6
-    (225, 290), #7
+    (225, 294), #7
     (250, 300), #8
     (290, 330)  #9
 ]
@@ -31,7 +31,7 @@ listLeft = [
     (445, 205), #6
     (345, 330), #7
     (395, 295), #8
-    (420, 290)  #9
+    (421, 295)  #9
 ]
 
 listUp = [
@@ -43,7 +43,7 @@ listUp = [
     (270, 95), #6
     (410, 110), #7
     (370, 95), #8
-    (293, 78)  #9
+    (355, 81)  #9
 ]
 
 listDown = [
@@ -53,7 +53,7 @@ listDown = [
     (260, 310), #4
     (310, 290), #5
     (370, 260), #6
-    (338, 332), #7
+    (338, 330), #7
     (360, 315), #8
     (400, 290)  #9
 ]
@@ -61,7 +61,7 @@ listDown = [
 listRight = [
     (330, 80), #1
     (380, 120), #2
-    (425, 175), #3
+    (425, 165), #3
     (330, 120), #4
     (375, 150), #5
     (425, 200), #6

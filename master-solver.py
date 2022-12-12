@@ -54,19 +54,12 @@ quarterTurn = 100
 halfTurn = 200
 
 #colors as RGB
-white = (239, 202, 230)
-red = (255, 72, 38)
-green = (147, 255, 203)
-black = (103, 75, 71)
-orange = (255, 128, 56)
-blue = (55, 190, 255)
-blue2 = (34, 141, 240)
-orange2 = (255, 230, 165)
-green2 = (76, 255, 222)
-green3 = (198, 255, 245)
-green4 = (98, 253, 172)
-red2 = (255, 127, 85),
-orange3 = (145, 121, 95)
+white = (224, 192, 212)
+red = (255, 82, 54)
+green = (66, 183, 101)
+black = (62, 48, 36)
+orange = (255, 135, 56)
+blue = (39, 138, 200)
 
 rgb_list = [
     white, 
@@ -74,14 +67,7 @@ rgb_list = [
     green, 
     black, 
     orange, 
-    blue, 
-    blue2,
-    orange2,
-    green2,
-    green3,
-    green4,
-    red2,
-    orange3
+    blue
     ]
 
 #List should match above list of colours but with letter associated to that colours side
@@ -91,14 +77,7 @@ names_list = [
     "F",
     "D",
     "L",
-    "B",
-    "B",
-    "L",
-    "F",
-    "F",
-    "F",
-    "R",
-    "L"
+    "B"
     ]
 
 #Each of these lists defines XY positions of individual cubies for that respective side

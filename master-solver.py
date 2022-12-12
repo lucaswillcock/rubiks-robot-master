@@ -61,17 +61,37 @@ black = (62, 48, 36)
 orange = (255, 135, 56)
 blue = (39, 138, 200)
 
+white1 = (238, 229, 254)
+red1 = (255, 82, 54)
+green1 = (41, 173, 254)
+black1 = (62, 48, 36)
+orange1 = (255, 170, 138)
+blue1 = (39, 138, 200)
+
 rgb_list = [
     white, 
     red, 
     green, 
     black, 
     orange, 
-    blue
+    blue,
+    
+    white1, 
+    red1, 
+    green1, 
+    black1, 
+    orange1, 
+    blue1
     ]
 
 #List should match above list of colours but with letter associated to that colours side
 names_list = [
+    "U",
+    "R",
+    "F",
+    "D",
+    "L",
+    "B",
     "U",
     "R",
     "F",
